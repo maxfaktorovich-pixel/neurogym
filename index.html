@@ -334,7 +334,7 @@
                 <h2 class="section-title">Полезные материалы</h2>
             </div>
             <div class="blog-grid">
-                <article class="blog-card">
+                <article class="blog-card" data-article="memory" style="cursor:pointer;">
                     <div class="blog-image" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); height:140px;"></div>
                     <div class="blog-content">
                         <span class="blog-tag">Нейронаука</span>
@@ -342,7 +342,7 @@
                         <p>Простыми словами о том, почему память можно тренировать.</p>
                     </div>
                 </article>
-                <article class="blog-card">
+                <article class="blog-card" data-article="hygiene" style="cursor:pointer;">
                     <div class="blog-image" style="background: linear-gradient(135deg, #10b981, #059669); height:140px;"></div>
                     <div class="blog-content">
                         <span class="blog-tag">Лайфхак</span>
@@ -544,6 +544,34 @@
         }
 
         speechSynthesis.onvoiceschanged = () => {};
+
+        const articles = {
+            memory: {
+                title: "Как работает рабочая память",
+                text: "Рабочая память — это способность удерживать и обрабатывать информацию в уме прямо сейчас.\n\nПредставьте её как стол, на котором вы работаете. Чем больше на нём места, тем больше задач вы можете держать одновременно.\n\nПочему её можно тренировать:\n\n1. Она пластична. Регулярные упражнения увеличивают объём информации, которую вы можете удерживать.\n2. Тренировки улучшают внимание и скорость мышления.\n3. Хорошая рабочая память помогает лучше учиться, решать задачи и меньше отвлекаться.\n\nПростые способы тренировать:\n- Повторяйте последовательности чисел в обратном порядке.\n- Запоминайте списки и воспроизводите их.\n- Делайте упражнения на удержание нескольких элементов в уме.\n\nРабочая память — это навык, а не фиксированная способность. Чем больше вы её используете осознанно, тем сильнее она становится."
+            },
+            hygiene: {
+                title: "5 правил цифровой гигиены",
+                text: "Цифровая гигиена помогает вернуть контроль над вниманием и меньше отвлекаться на телефон.\n\n1. Отключайте уведомления\nОставьте только самые важные. Остальные проверяйте вручную 2–3 раза в день.\n\n2. Используйте режим «Не беспокоить»\nВключайте его на время глубокой работы (минимум 25–50 минут).\n\n3. Убирайте телефон из поля зрения\nКогда он лежит рядом, мозг постоянно проверяет, не пришло ли что-то новое.\n\n4. Делайте перерывы без экрана\nКаждый час вставайте и смотрите вдаль 1–2 минуты. Это снижает усталость глаз и возвращает фокус.\n\n5. Заканчивайте день без телефона\nЗа 30–60 минут до сна убирайте гаджеты. Это улучшает качество сна и восстановление внимания.\n\nЭти правила простые, но при регулярном соблюдении заметно повышают способность концентрироваться."
+            }
+        };
+
+        document.querySelectorAll('.blog-card[data-article]').forEach(card => {
+            card.addEventListener('click', () => {
+                const id = card.dataset.article;
+                const art = articles[id];
+                if (!art) return;
+                document.getElementById('exTitle').textContent = art.title;
+                document.getElementById('exContent').innerHTML = art.text.replace(/\\n/g, '<br>');
+                document.getElementById('exerciseModal').classList.add('open');
+                document.body.style.overflow = 'hidden';
+                const btn = document.getElementById('listenBtn');
+                btn.textContent = '🔊 Прослушать';
+                btn.classList.remove('playing');
+                if (speechSynthesis.speaking) speechSynthesis.cancel();
+                isSpeaking = false;
+            });
+        });
 
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav');
