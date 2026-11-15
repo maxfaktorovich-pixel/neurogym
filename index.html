@@ -8,6 +8,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .program-row { cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+        .program-row:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.3); }
+        .exercise-modal { max-width: 640px; }
+        .exercise-modal ol { margin: 16px 0; padding-left: 24px; }
+        .exercise-modal li { margin: 8px 0; }
+        .listen-btn { margin-top: 16px; display: inline-flex; align-items: center; gap: 8px; }
+        .listen-btn.playing { background: #10b981; }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -41,8 +50,7 @@
                 <h1 class="hero-title">Тренируй мозг,<br>а не только мышцы</h1>
                 <p class="hero-subtitle">Первый в России фитнес-клуб для интеллекта. Научно обоснованные тренировки памяти, внимания, скорости мышления и креативности — полностью бесплатно.</p>
                 <div class="hero-actions">
-                    <button class="btn btn-primary btn-lg" onclick="openModal()">Пройти бесплатный нейроскрининг</button>
-                    <a href="#programs" class="btn btn-outline btn-lg">Смотреть программы</a>
+                    <a href="#programs" class="btn btn-primary btn-lg">Смотреть упражнения</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat">
@@ -57,7 +65,7 @@
             </div>
             <div class="hero-visual">
                 <div class="hero-image-wrapper">
-                    <img src="hero-image.png" alt="Фитнес-клуб для мозга — тренировка интеллекта" class="hero-image">
+                    <img src="hero-image.png" alt="Фитнес-клуб для мозга" class="hero-image">
                     <div class="hero-image-glow"></div>
                 </div>
             </div>
@@ -76,446 +84,85 @@
                 <div class="about-card">
                     <div class="about-icon">🔬</div>
                     <h3>Научный подход</h3>
-                    <p>Все программы разработаны совместно с нейропсихологами и когнитивными учёными. Основаны на доказательной базе.</p>
-                </div>
-                <div class="about-card">
-                    <div class="about-icon">⚡</div>
-                    <h3>Измеримый прогресс</h3>
-                    <p>Регулярный нейроскрининг, графики памяти, внимания и IQ. Вы видите результат в цифрах, а не только «чувствуете».</p>
+                    <p>Все программы основаны на доказательных методиках тренировки когнитивных функций.</p>
                 </div>
                 <div class="about-card">
                     <div class="about-icon">🎯</div>
-                    <h3>Не как обычный зал</h3>
-                    <p>Никаких бесцельных повторений. Каждая тренировка — целенаправленная работа над конкретными когнитивными навыками.</p>
+                    <h3>Сразу в дело</h3>
+                    <p>Нажмите на программу — читайте или слушайте упражнение и делайте прямо сейчас. Без записи.</p>
                 </div>
                 <div class="about-card">
                     <div class="about-icon">🎁</div>
                     <h3>Полностью бесплатно</h3>
-                    <p>Все программы, нейроскрининг, доступ к личному кабинету и материалам — без оплаты. Мы верим, что ум должен быть доступен каждому.</p>
+                    <p>Все упражнения доступны без оплаты и регистрации.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Top Programs -->
-    <section class="section programs-preview">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Топ программ</span>
-                <h2 class="section-title">Самые популярные направления</h2>
-                <p class="section-desc">Все занятия — бесплатно</p>
-            </div>
-            <div class="cards-grid top-programs">
-                <article class="program-card featured">
-                    <div class="program-badge">Хит</div>
-                    <div class="program-icon">🏃‍♂️</div>
-                    <h3>Нейрокардио</h3>
-                    <p>Тренировки на скорость мышления и концентрацию под динамичную музыку. Идеально для тех, кто хочет мыслить быстрее.</p>
-                    <ul class="program-features">
-                        <li>Улучшение внимания</li>
-                        <li>Скорость обработки информации</li>
-                        <li>Энергия и фокус</li>
-                    </ul>
-                    <div class="program-price free">Бесплатно</div>
-                    <a href="#programs" class="btn btn-outline">Подробнее</a>
-                </article>
-                <article class="program-card">
-                    <div class="program-icon">💪</div>
-                    <h3>Силовая нейробика</h3>
-                    <p>Решение сложных логических задач на время. Прокачка аналитического мышления и рабочей памяти.</p>
-                    <ul class="program-features">
-                        <li>Логика и дедукция</li>
-                        <li>Рабочая память</li>
-                        <li>Принятие решений</li>
-                    </ul>
-                    <div class="program-price free">Бесплатно</div>
-                    <a href="#programs" class="btn btn-outline">Подробнее</a>
-                </article>
-                <article class="program-card">
-                    <div class="program-icon">🧘</div>
-                    <h3>Йога для ума</h3>
-                    <p>Медитативные практики, майндфулнесс и борьба со стрессом. Восстановление и устойчивость психики.</p>
-                    <ul class="program-features">
-                        <li>Снижение тревоги</li>
-                        <li>Эмоциональный интеллект</li>
-                        <li>Глубокий фокус</li>
-                    </ul>
-                    <div class="program-price free">Бесплатно</div>
-                    <a href="#programs" class="btn btn-outline">Подробнее</a>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Banner -->
-    <section class="cta-banner">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Пройди бесплатный нейроскрининг</h2>
-                <p>15 минут — и ты узнаешь свой текущий уровень памяти, внимания и скорости мышления. Полностью бесплатно и без обязательств.</p>
-                <button class="btn btn-primary btn-lg" onclick="openModal()">Записаться бесплатно</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Programs Full -->
+    <!-- Programs -->
     <section id="programs" class="section programs">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Программы</span>
-                <h2 class="section-title">Все направления клуба</h2>
-                <p class="section-desc">Читайте описание и сразу выполняйте упражнения. Все — бесплатно</p>
+                <h2 class="section-title">Выберите упражнение</h2>
+                <p class="section-desc">Нажмите на карточку — откроется описание. Можно читать или прослушать.</p>
             </div>
             <div class="programs-list">
-                <div class="program-row">
+                <div class="program-row" data-id="neurocardio">
                     <div class="program-row-icon">🏃‍♂️</div>
                     <div class="program-row-content">
                         <h3>Нейрокардио</h3>
-                        <p><strong>Как выполнять:</strong></p>
-                        <ol>
-                            <li>Включите динамичную музыку (120–140 ударов в минуту).</li>
-                            <li>В течение 45 секунд называйте вслух цвета, которые видите вокруг себя, но только те, что отличаются от цвета одежды, в которой вы сейчас.</li>
-                            <li>15 секунд отдыха.</li>
-                            <li>Следующие 45 секунд: смотрите на предметы и быстро называйте их противоположность (стол — стул, свет — темнота и т.д.).</li>
-                            <li>Повторите цикл 8–10 раз. Засекайте время на телефоне.</li>
-                        </ol>
-                        <p>Развивает скорость переключения внимания и устойчивость к отвлечениям.</p>
+                        <p>Интервальная тренировка внимания и скорости мышления</p>
                     </div>
                     <div class="program-row-meta">
-                        <span class="level">Все уровни</span>
                         <span class="duration">15–20 мин</span>
                         <span class="free-badge">Бесплатно</span>
                     </div>
                 </div>
-                <div class="program-row">
+                <div class="program-row" data-id="power">
                     <div class="program-row-icon">💪</div>
                     <div class="program-row-content">
                         <h3>Силовая нейробика</h3>
-                        <p><strong>Как выполнять:</strong></p>
-                        <ol>
-                            <li>Прочитайте последовательность чисел: 7 – 2 – 9 – 4 – 1 – 6.</li>
-                            <li>Закройте глаза и повторите её в обратном порядке.</li>
-                            <li>Добавьте ещё одно число и повторите.</li>
-                            <li>Следующее задание: за 60 секунд придумайте как можно больше способов использовать обычный кирпич (кроме строительства).</li>
-                            <li>Запишите идеи. Потом сравните с тем, сколько придумали вчера.</li>
-                        </ol>
-                        <p>Тренирует рабочую память и способность генерировать идеи под давлением времени.</p>
+                        <p>Рабочая память и генерация идей на время</p>
                     </div>
                     <div class="program-row-meta">
-                        <span class="level">Средний+</span>
                         <span class="duration">15 мин</span>
                         <span class="free-badge">Бесплатно</span>
                     </div>
                 </div>
-                <div class="program-row">
+                <div class="program-row" data-id="stretch">
                     <div class="program-row-icon">🧠</div>
                     <div class="program-row-content">
                         <h3>Растяжка интеллекта</h3>
-                        <p><strong>Как выполнять:</strong></p>
-                        <ol>
-                            <li>Выберите обычную проблему из жизни (например, «как меньше отвлекаться на телефон»).</li>
-                            <li>За 3 минуты придумайте 10 самых странных и нелепых решений (чем абсурднее — тем лучше).</li>
-                            <li>Из этих 10 выберите 1–2, которые можно адаптировать в реальное действие.</li>
-                            <li>Дополнительно: возьмите любой предмет на столе и опишите его так, будто вы инопланетянин, который видит его впервые.</li>
-                        </ol>
-                        <p>Помогает выходить за рамки привычных паттернов мышления.</p>
+                        <p>Креативность и выход за рамки привычного</p>
                     </div>
                     <div class="program-row-meta">
-                        <span class="level">Все уровни</span>
                         <span class="duration">15–20 мин</span>
                         <span class="free-badge">Бесплатно</span>
                     </div>
                 </div>
-                <div class="program-row">
+                <div class="program-row" data-id="yoga">
                     <div class="program-row-icon">🧘</div>
                     <div class="program-row-content">
                         <h3>Йога для ума</h3>
-                        <p><strong>Как выполнять:</strong></p>
-                        <ol>
-                            <li>Сядьте удобно, закройте глаза.</li>
-                            <li>В течение 2 минут просто замечайте дыхание, не меняя его.</li>
-                            <li>Следующие 3 минуты: каждый раз, когда приходит мысль, мысленно говорите «мысль» и возвращайтесь к дыханию.</li>
-                            <li>Откройте глаза. Посмотрите на один предмет 30 секунд и опишите его максимально подробно (цвет, форма, текстура, блики).</li>
-                            <li>Повторите с закрытыми глазами, вспоминая детали.</li>
-                        </ol>
-                        <p>Снижает уровень тревоги и восстанавливает способность концентрироваться.</p>
+                        <p>Осознанность и восстановление внимания</p>
                     </div>
                     <div class="program-row-meta">
-                        <span class="level">Все уровни</span>
                         <span class="duration">10–15 мин</span>
                         <span class="free-badge">Бесплатно</span>
                     </div>
                 </div>
-                <div class="program-row">
+                <div class="program-row" data-id="detox">
                     <div class="program-row-icon">📵</div>
                     <div class="program-row-content">
                         <h3>Детокс от инфошума</h3>
-                        <p><strong>Как выполнять:</strong></p>
-                        <ol>
-                            <li>Отключите все уведомления на телефоне на 25 минут.</li>
-                            <li>Поставьте таймер на 25 минут и займитесь одной задачей без переключений (чтение, работа, уборка).</li>
-                            <li>Если захотелось проверить телефон — запишите на бумажке, что именно хотели проверить, и продолжайте.</li>
-                            <li>После таймера посмотрите на список и решите, что из этого действительно нужно сделать сейчас.</li>
-                            <li>Повторяйте 2–3 раза в день.</li>
-                        </ol>
-                        <p>Восстанавливает способность глубоко концентрироваться и снижает импульсивные проверки телефона.</p>
+                        <p>Глубокая концентрация без отвлечений</p>
                     </div>
                     <div class="program-row-meta">
-                        <span class="level">Все уровни</span>
-                        <span class="duration">25 мин × несколько раз</span>
+                        <span class="duration">25 мин</span>
                         <span class="free-badge">Бесплатно</span>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Schedule & Prices -->
-    <section id="schedule" class="section schedule">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Расписание</span>
-                <h2 class="section-title">Выберите удобное время</h2>
-                <p class="section-desc">Все занятия и абонементы — полностью бесплатно</p>
-            </div>
-
-            <div class="schedule-filters">
-                <select id="filter-program">
-                    <option value="all">Все программы</option>
-                    <option value="neurocardio">Нейрокардио</option>
-                    <option value="power">Силовая нейробика</option>
-                    <option value="stretch">Растяжка интеллекта</option>
-                    <option value="yoga">Йога для ума</option>
-                    <option value="detox">Детокс от инфошума</option>
-                </select>
-                <select id="filter-level">
-                    <option value="all">Все уровни</option>
-                    <option value="beginner">Новичок</option>
-                    <option value="pro">Профи</option>
-                </select>
-                <select id="filter-format">
-                    <option value="all">Все форматы</option>
-                    <option value="offline">Офлайн</option>
-                    <option value="online">Онлайн</option>
-                </select>
-            </div>
-
-            <div class="calendar-placeholder">
-                <div class="calendar-header">
-                    <button class="cal-nav">‹</button>
-                    <h3>Ноябрь 2026</h3>
-                    <button class="cal-nav">›</button>
-                </div>
-                <div class="calendar-grid">
-                    <div class="cal-day header">Пн</div>
-                    <div class="cal-day header">Вт</div>
-                    <div class="cal-day header">Ср</div>
-                    <div class="cal-day header">Чт</div>
-                    <div class="cal-day header">Пт</div>
-                    <div class="cal-day header">Сб</div>
-                    <div class="cal-day header">Вс</div>
-                    <div class="cal-day empty"></div>
-                    <div class="cal-day empty"></div>
-                    <div class="cal-day empty"></div>
-                    <div class="cal-day empty"></div>
-                    <div class="cal-day empty"></div>
-                    <div class="cal-day empty"></div>
-                    <div class="cal-day">1</div>
-                    <div class="cal-day">2</div>
-                    <div class="cal-day has-event">3<span class="event-dot"></span></div>
-                    <div class="cal-day">4</div>
-                    <div class="cal-day has-event">5<span class="event-dot"></span></div>
-                    <div class="cal-day">6</div>
-                    <div class="cal-day has-event">7<span class="event-dot"></span></div>
-                    <div class="cal-day">8</div>
-                    <div class="cal-day has-event">9<span class="event-dot"></span><span class="event-dot"></span></div>
-                    <div class="cal-day">10</div>
-                    <div class="cal-day has-event">11<span class="event-dot"></span></div>
-                    <div class="cal-day">12</div>
-                    <div class="cal-day">13</div>
-                    <div class="cal-day has-event">14<span class="event-dot"></span></div>
-                    <div class="cal-day today">15</div>
-                    <div class="cal-day">16</div>
-                    <div class="cal-day has-event">17<span class="event-dot"></span></div>
-                    <div class="cal-day">18</div>
-                    <div class="cal-day has-event">19<span class="event-dot"></span></div>
-                    <div class="cal-day">20</div>
-                    <div class="cal-day">21</div>
-                    <div class="cal-day has-event">22<span class="event-dot"></span></div>
-                    <div class="cal-day">23</div>
-                    <div class="cal-day">24</div>
-                    <div class="cal-day has-event">25<span class="event-dot"></span></div>
-                    <div class="cal-day">26</div>
-                    <div class="cal-day">27</div>
-                    <div class="cal-day has-event">28<span class="event-dot"></span></div>
-                    <div class="cal-day">29</div>
-                    <div class="cal-day">30</div>
-                </div>
-                <p class="calendar-note">Наведите на точку, чтобы увидеть занятия. Все тренировки — бесплатно.</p>
-            </div>
-
-            <div class="prices">
-                <h3 class="prices-title">Прайс-лист</h3>
-                <div class="price-table-wrapper">
-                    <table class="price-table">
-                        <thead>
-                            <tr>
-                                <th>Формат</th>
-                                <th>Разовое занятие</th>
-                                <th>Абонемент 8 занятий</th>
-                                <th>Безлимит (месяц)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Офлайн</td>
-                                <td class="free-cell">Бесплатно</td>
-                                <td class="free-cell">Бесплатно</td>
-                                <td class="free-cell">Бесплатно</td>
-                            </tr>
-                            <tr>
-                                <td>Онлайн</td>
-                                <td class="free-cell">Бесплатно</td>
-                                <td class="free-cell">Бесплатно</td>
-                                <td class="free-cell">Бесплатно</td>
-                            </tr>
-                            <tr>
-                                <td>Смешанный</td>
-                                <td class="free-cell">Бесплатно</td>
-                                <td class="free-cell">Бесплатно</td>
-                                <td class="free-cell">Бесплатно</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p class="price-note">* Все программы, нейроскрининг и доступ к личному кабинету — полностью бесплатны. Без скрытых платежей.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Neuro Cafe -->
-    <section id="cafe" class="section cafe">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Нейро-кафе</span>
-                <h2 class="section-title">Питание для мозга</h2>
-                <p class="section-desc">Специализированное меню для поддержки когнитивных функций. Часть позиций — бесплатно для участников клуба.</p>
-            </div>
-            <div class="cafe-grid">
-                <article class="cafe-card">
-                    <div class="cafe-icon">🫐</div>
-                    <h3>Смузи для памяти</h3>
-                    <p>Черника, грецкий орех, шпинат, кокосовое молоко. Богаты антиоксидантами и омега-3.</p>
-                    <div class="cafe-price free">Бесплатно*</div>
-                </article>
-                <article class="cafe-card">
-                    <div class="cafe-icon">🥑</div>
-                    <h3>Кето-обеды для энергии</h3>
-                    <p>Высокожировые блюда без скачков сахара. Стабильная энергия на весь день.</p>
-                    <div class="cafe-price">от 450 ₽</div>
-                </article>
-                <article class="cafe-card">
-                    <div class="cafe-icon">☕</div>
-                    <h3>Ноотропный кофе</h3>
-                    <p>Кофе с L-теанином, львиной гривой и небольшим количеством MCT. Фокус без нервозности.</p>
-                    <div class="cafe-price free">Бесплатно*</div>
-                </article>
-                <article class="cafe-card">
-                    <div class="cafe-icon">🍵</div>
-                    <h3>Фокус-чай</h3>
-                    <p>Зелёный чай, розмарин, мята. Мягкая стимуляция и ясность ума.</p>
-                    <div class="cafe-price free">Бесплатно*</div>
-                </article>
-            </div>
-            <p class="cafe-note">* Бесплатно для участников с активным абонементом (все абонементы бесплатные).</p>
-        </div>
-    </section>
-
-    <!-- Blog -->
-    <section id="blog" class="section blog">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Блог</span>
-                <h2 class="section-title">Полезные материалы</h2>
-            </div>
-            <div class="blog-categories">
-                <span class="blog-cat">Нейронаука простыми словами</span>
-                <span class="blog-cat">Кейсы: до/после</span>
-                <span class="blog-cat">Интервью с тренерами</span>
-                <span class="blog-cat">Лайфхаки для работы</span>
-            </div>
-            <div class="blog-grid">
-                <article class="blog-card">
-                    <div class="blog-image" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);"></div>
-                    <div class="blog-content">
-                        <span class="blog-tag">Нейронаука</span>
-                        <h3>Как работает рабочая память и почему её можно прокачать</h3>
-                        <p>Простыми словами о том, что такое рабочая память и какие упражнения реально её улучшают.</p>
-                        <a href="#" class="blog-link">Читать →</a>
-                    </div>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-image" style="background: linear-gradient(135deg, #06b6d4, #3b82f6);"></div>
-                    <div class="blog-content">
-                        <span class="blog-tag">Кейс</span>
-                        <h3>От «забываю всё» до +38% памяти за 10 недель</h3>
-                        <p>История участницы, которая совмещала Нейрокардио и практику внимания.</p>
-                        <a href="#" class="blog-link">Читать →</a>
-                    </div>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-image" style="background: linear-gradient(135deg, #10b981, #059669);"></div>
-                    <div class="blog-content">
-                        <span class="blog-tag">Лайфхак</span>
-                        <h3>5 правил цифровой гигиены, которые реально работают</h3>
-                        <p>Как перестать тонуть в уведомлениях и вернуть контроль над вниманием.</p>
-                        <a href="#" class="blog-link">Читать →</a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Personal Cabinet Preview -->
-    <section id="cabinet" class="section cabinet">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Личный кабинет</span>
-                <h2 class="section-title">Ваш прогресс всегда под рукой</h2>
-                <p class="section-desc">После бесплатной регистрации вы получаете доступ к аналитике и управлению тренировками</p>
-            </div>
-            <div class="cabinet-preview">
-                <div class="cabinet-tabs">
-                    <button class="tab active">Мой прогресс</button>
-                    <button class="tab">Мои тренировки</button>
-                    <button class="tab">Расписание</button>
-                    <button class="tab">Бонусы</button>
-                </div>
-                <div class="cabinet-content">
-                    <div class="progress-cards">
-                        <div class="progress-card">
-                            <div class="progress-label">Память</div>
-                            <div class="progress-value">+18%</div>
-                            <div class="progress-bar"><div class="fill" style="width: 68%"></div></div>
-                        </div>
-                        <div class="progress-card">
-                            <div class="progress-label">Скорость</div>
-                            <div class="progress-value">+12%</div>
-                            <div class="progress-bar"><div class="fill" style="width: 55%"></div></div>
-                        </div>
-                        <div class="progress-card">
-                            <div class="progress-label">Внимание</div>
-                            <div class="progress-value">+22%</div>
-                            <div class="progress-bar"><div class="fill" style="width: 74%"></div></div>
-                        </div>
-                        <div class="progress-card">
-                            <div class="progress-label">IQ (оценка)</div>
-                            <div class="progress-value">118</div>
-                            <div class="progress-bar"><div class="fill" style="width: 82%"></div></div>
-                        </div>
-                    </div>
-                    <p class="cabinet-note">Войдите или зарегистрируйтесь бесплатно, чтобы увидеть полную аналитику, историю тренировок и реферальную программу.</p>
-                    <button class="btn btn-primary" onclick="openModal()">Войти в кабинет бесплатно</button>
                 </div>
             </div>
         </div>
@@ -530,68 +177,146 @@
                         <span class="logo-icon">🧠</span>
                         <span class="logo-text">Neuro<span>Gym</span></span>
                     </a>
-                    <p>Фитнес-клуб для мозга. Тренируем интеллект научно и полностью бесплатно.</p>
-                    <div class="socials">
-                        <a href="#" aria-label="Telegram">TG</a>
-                        <a href="#" aria-label="VK">VK</a>
-                        <a href="#" aria-label="YouTube">YT</a>
-                        <a href="#" aria-label="Instagram">IG</a>
-                    </div>
+                    <p>Фитнес-клуб для мозга. Тренируем интеллект бесплатно.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Навигация</h4>
                     <a href="#programs">Программы</a>
                     <a href="#schedule">Расписание</a>
                     <a href="#cafe">Нейро-кафе</a>
-                    <a href="#blog">Блог</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Контакты</h4>
-                    <p>Москва, ул. Примерная, 12</p>
-                    <p>+7 (495) 123-45-67</p>
-                    <p>hello@neurogym.ru</p>
-                    <div class="map-placeholder">
-                        <span>📍 Карта проезда</span>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Документы</h4>
-                    <a href="#">Политика конфиденциальности</a>
-                    <a href="#">Условия использования</a>
-                    <a href="#">Оферта</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2026 NeuroGym. Все права защищены. Все услуги бесплатны.</p>
-                <button class="btn btn-primary" onclick="openModal()">Записаться бесплатно</button>
+                <p>© 2026 NeuroGym. Все упражнения бесплатны.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Modal -->
+    <!-- Exercise Modal -->
+    <div class="modal-overlay" id="exerciseModal">
+        <div class="modal exercise-modal">
+            <button class="modal-close" onclick="closeExercise()">×</button>
+            <h2 id="exTitle"></h2>
+            <div id="exContent"></div>
+            <button class="btn btn-primary listen-btn" id="listenBtn" onclick="toggleSpeech()">
+                🔊 Прослушать
+            </button>
+        </div>
+    </div>
+
+    <!-- Original modal for signup -->
     <div class="modal-overlay" id="modal">
         <div class="modal">
             <button class="modal-close" onclick="closeModal()">×</button>
             <h2>Бесплатная запись</h2>
-            <p>Оставьте контакты — мы перезвоним в течение 15 минут и подберём удобное время. Всё полностью бесплатно.</p>
+            <p>Оставьте контакты — мы перезвоним и подберём удобное время.</p>
             <form class="modal-form" onsubmit="submitForm(event)">
                 <input type="text" placeholder="Ваше имя" required>
                 <input type="tel" placeholder="Телефон" required>
-                <input type="email" placeholder="Email (необязательно)">
-                <select>
-                    <option value="">Интересует программа...</option>
-                    <option>Нейрокардио</option>
-                    <option>Силовая нейробика</option>
-                    <option>Растяжка интеллекта</option>
-                    <option>Йога для ума</option>
-                    <option>Детокс от инфошума</option>
-                    <option>Пока не знаю</option>
-                </select>
-                <button type="submit" class="btn btn-primary btn-block">Записаться бесплатно</button>
+                <button type="submit" class="btn btn-primary btn-block">Отправить</button>
             </form>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        const exercises = {
+            neurocardio: {
+                title: "Нейрокардио",
+                text: "Как выполнять:\n\n1. Включите динамичную музыку (120–140 ударов в минуту).\n2. В течение 45 секунд называйте вслух цвета, которые видите вокруг себя, но только те, что отличаются от цвета одежды, в которой вы сейчас.\n3. 15 секунд отдыха.\n4. Следующие 45 секунд: смотрите на предметы и быстро называйте их противоположность (стол — стул, свет — темнота и т.д.).\n5. Повторите цикл 8–10 раз. Засекайте время на телефоне.\n\nРазвивает скорость переключения внимания и устойчивость к отвлечениям."
+            },
+            power: {
+                title: "Силовая нейробика",
+                text: "Как выполнять:\n\n1. Прочитайте последовательность чисел: 7 – 2 – 9 – 4 – 1 – 6.\n2. Закройте глаза и повторите её в обратном порядке.\n3. Добавьте ещё одно число и повторите.\n4. Следующее задание: за 60 секунд придумайте как можно больше способов использовать обычный кирпич (кроме строительства).\n5. Запишите идеи. Потом сравните с тем, сколько придумали вчера.\n\nТренирует рабочую память и способность генерировать идеи под давлением времени."
+            },
+            stretch: {
+                title: "Растяжка интеллекта",
+                text: "Как выполнять:\n\n1. Выберите обычную проблему из жизни (например, «как меньше отвлекаться на телефон»).\n2. За 3 минуты придумайте 10 самых странных и нелепых решений (чем абсурднее — тем лучше).\n3. Из этих 10 выберите 1–2, которые можно адаптировать в реальное действие.\n4. Дополнительно: возьмите любой предмет на столе и опишите его так, будто вы инопланетянин, который видит его впервые.\n\nПомогает выходить за рамки привычных паттернов мышления."
+            },
+            yoga: {
+                title: "Йога для ума",
+                text: "Как выполнять:\n\n1. Сядьте удобно, закройте глаза.\n2. В течение 2 минут просто замечайте дыхание, не меняя его.\n3. Следующие 3 минуты: каждый раз, когда приходит мысль, мысленно говорите «мысль» и возвращайтесь к дыханию.\n4. Откройте глаза. Посмотрите на один предмет 30 секунд и опишите его максимально подробно (цвет, форма, текстура, блики).\n5. Повторите с закрытыми глазами, вспоминая детали.\n\nСнижает уровень тревоги и восстанавливает способность концентрироваться."
+            },
+            detox: {
+                title: "Детокс от инфошума",
+                text: "Как выполнять:\n\n1. Отключите все уведомления на телефоне на 25 минут.\n2. Поставьте таймер на 25 минут и займитесь одной задачей без переключений (чтение, работа, уборка).\n3. Если захотелось проверить телефон — запишите на бумажке, что именно хотели проверить, и продолжайте.\n4. После таймера посмотрите на список и решите, что из этого действительно нужно сделать сейчас.\n5. Повторяйте 2–3 раза в день.\n\nВосстанавливает способность глубоко концентрироваться и снижает импульсивные проверки телефона."
+            }
+        };
+
+        let isSpeaking = false;
+
+        document.querySelectorAll('.program-row').forEach(row => {
+            row.addEventListener('click', () => {
+                const id = row.dataset.id;
+                const ex = exercises[id];
+                if (!ex) return;
+                document.getElementById('exTitle').textContent = ex.title;
+                document.getElementById('exContent').innerHTML = ex.text.replace(/\\n/g, '<br>');
+                document.getElementById('exerciseModal').classList.add('open');
+                document.body.style.overflow = 'hidden';
+                const btn = document.getElementById('listenBtn');
+                btn.textContent = '🔊 Прослушать';
+                btn.classList.remove('playing');
+                if (speechSynthesis.speaking) speechSynthesis.cancel();
+                isSpeaking = false;
+            });
+        });
+
+        function closeExercise() {
+            document.getElementById('exerciseModal').classList.remove('open');
+            document.body.style.overflow = '';
+            if (speechSynthesis.speaking) speechSynthesis.cancel();
+            isSpeaking = false;
+            document.getElementById('listenBtn').textContent = '🔊 Прослушать';
+            document.getElementById('listenBtn').classList.remove('playing');
+        }
+
+        function toggleSpeech() {
+            const btn = document.getElementById('listenBtn');
+            const text = document.getElementById('exContent').innerText;
+
+            if (isSpeaking) {
+                speechSynthesis.cancel();
+                isSpeaking = false;
+                btn.textContent = '🔊 Прослушать';
+                btn.classList.remove('playing');
+                return;
+            }
+
+            speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'ru-RU';
+            utterance.rate = 0.95;
+            utterance.onend = () => {
+                isSpeaking = false;
+                btn.textContent = '🔊 Прослушать';
+                btn.classList.remove('playing');
+            };
+            speechSynthesis.speak(utterance);
+            isSpeaking = true;
+            btn.textContent = '⏹ Остановить';
+            btn.classList.add('playing');
+        }
+
+        function openModal() {
+            document.getElementById('modal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            document.getElementById('modal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        function submitForm(e) {
+            e.preventDefault();
+            alert('Заявка отправлена! Мы свяжемся с вами.');
+            closeModal();
+        }
+
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav');
+        burger?.addEventListener('click', () => nav.classList.toggle('open'));
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => nav.classList.remove('open'));
+        });
+    </script>
 </body>
 </html>
