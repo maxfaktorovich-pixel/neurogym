@@ -352,6 +352,25 @@
             document.getElementById('listenBtn').classList.remove('playing');
         }
 
+        function getBestRussianVoice() {
+            const voices = speechSynthesis.getVoices();
+            // Prefer high-quality Russian voices
+            const preferred = [
+                'Google русский',
+                'Yandex',
+                'Milena',
+                'Microsoft Irina',
+                'Russian',
+                'ru-RU'
+            ];
+            for (const name of preferred) {
+                const v = voices.find(voice => voice.name.includes(name) || (voice.lang === 'ru-RU' && voice.localService === false));
+                if (v) return v;
+            }
+            // Fallback to any Russian voice
+            return voices.find(v => v.lang.startsWith('ru')) || voices[0];
+        }
+
         function toggleSpeech() {
             const btn = document.getElementById('listenBtn');
             const text = document.getElementById('exContent').innerText;
@@ -366,8 +385,12 @@
 
             speechSynthesis.cancel();
             const utterance = new SpeechSynthesisUtterance(text);
+            const voice = getBestRussianVoice();
+            if (voice) utterance.voice = voice;
             utterance.lang = 'ru-RU';
-            utterance.rate = 0.95;
+            utterance.rate = 0.92;      // чуть медленнее для чёткости
+            utterance.pitch = 1.0;
+            utterance.volume = 1.0;
             utterance.onend = () => {
                 isSpeaking = false;
                 btn.textContent = '🔊 Прослушать';
@@ -378,6 +401,9 @@
             btn.textContent = '⏹ Остановить';
             btn.classList.add('playing');
         }
+
+        // Load voices (some browsers need this)
+        speechSynthesis.onvoiceschanged = () => {};
 
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav');
