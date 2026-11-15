@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фитнес-клуб для мозга | NeuroGym</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="#home" class="logo">
+                <span class="logo-icon">🧠</span>
+                <span class="logo-text">Neuro<span>Gym</span></span>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="#home" class="nav-link active">Главная</a>
+                <a href="#programs" class="nav-link">Программы</a>
+                <a href="#trainers" class="nav-link">Тренеры</a>
+                <a href="#schedule" class="nav-link">Расписание</a>
+                <a href="#cafe" class="nav-link">Нейро-кафе</a>
+                <a href="#blog" class="nav-link">Блог</a>
+                <a href="#cabinet" class="nav-link">Кабинет</a>
+            </nav>
+            <button class="btn btn-primary header-cta" onclick="openModal()">Записаться бесплатно</button>
+            <button class="burger" id="burger" aria-label="Меню">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">Бесплатно для всех</div>
+                <h1 class="hero-title">Тренируй мозг,<br>а не только мышцы</h1>
+                <p class="hero-subtitle">Первый в России фитнес-клуб для интеллекта. Научно обоснованные тренировки памяти, внимания, скорости мышления и креативности — полностью бесплатно.</p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary btn-lg" onclick="openModal()">Пройти бесплатный нейроскрининг</button>
+                    <a href="#programs" class="btn btn-outline btn-lg">Смотреть программы</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-value">40%</div>
+                        <div class="stat-label">Улучшение памяти</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">+25%</div>
+                        <div class="stat-label">Скорость реакции</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">12k+</div>
+                        <div class="stat-label">Участников</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-wrapper">
+                    <img src="hero-image.png" alt="Фитнес-клуб для мозга — тренировка интеллекта" class="hero-image">
+                    <div class="hero-image-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">О клубе</span>
+                <h2 class="section-title">Философия NeuroGym</h2>
+                <p class="section-desc">Мы не качаем бицепсы. Мы прокачиваем нейронные сети. И всё это — бесплатно.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">🔬</div>
+                    <h3>Научный подход</h3>
+                    <p>Все программы разработаны совместно с нейропсихологами и когнитивными учёными. Основаны на доказательной базе.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">⚡</div>
+                    <h3>Измеримый прогресс</h3>
+                    <p>Регулярный нейроскрининг, графики памяти, внимания и IQ. Вы видите результат в цифрах, а не только «чувствуете».</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">🎯</div>
+                    <h3>Не как обычный зал</h3>
+                    <p>Никаких бесцельных повторений. Каждая тренировка — целенаправленная работа над конкретными когнитивными навыками.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">🎁</div>
+                    <h3>Полностью бесплатно</h3>
+                    <p>Все программы, нейроскрининг, доступ к личному кабинету и материалам — без оплаты. Мы верим, что ум должен быть доступен каждому.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Programs -->
+    <section class="section programs-preview">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Топ программ</span>
+                <h2 class="section-title">Самые популярные направления</h2>
+                <p class="section-desc">Все занятия — бесплатно</p>
+            </div>
+            <div class="cards-grid top-programs">
+                <article class="program-card featured">
+                    <div class="program-badge">Хит</div>
+                    <div class="program-icon">🏃‍♂️</div>
+                    <h3>Нейрокардио</h3>
+                    <p>Тренировки на скорость мышления и концентрацию под динамичную музыку. Идеально для тех, кто хочет мыслить быстрее.</p>
+                    <ul class="program-features">
+                        <li>Улучшение внимания</li>
+                        <li>Скорость обработки информации</li>
+                        <li>Энергия и фокус</li>
+                    </ul>
+                    <div class="program-price free">Бесплатно</div>
+                    <a href="#programs" class="btn btn-outline">Подробнее</a>
+                </article>
+                <article class="program-card">
+                    <div class="program-icon">💪</div>
+                    <h3>Силовая нейробика</h3>
+                    <p>Решение сложных логических задач на время. Прокачка аналитического мышления и рабочей памяти.</p>
+                    <ul class="program-features">
+                        <li>Логика и дедукция</li>
+                        <li>Рабочая память</li>
+                        <li>Принятие решений</li>
+                    </ul>
+                    <div class="program-price free">Бесплатно</div>
+                    <a href="#programs" class="btn btn-outline">Подробнее</a>
+                </article>
+                <article class="program-card">
+                    <div class="program-icon">🧘</div>
+                    <h3>Йога для ума</h3>
+                    <p>Медитативные практики, майндфулнесс и борьба со стрессом. Восстановление и устойчивость психики.</p>
+                    <ul class="program-features">
+                        <li>Снижение тревоги</li>
+                        <li>Эмоциональный интеллект</li>
+                        <li>Глубокий фокус</li>
+                    </ul>
+                    <div class="program-price free">Бесплатно</div>
+                    <a href="#programs" class="btn btn-outline">Подробнее</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section reviews">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Отзывы</span>
+                <h2 class="section-title">Что говорят участники</h2>
+            </div>
+            <div class="reviews-slider">
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">«После 2 месяцев Нейрокардио я стал заметно быстрее соображать на совещаниях. Коллеги спрашивают, что я пью. И всё бесплатно — просто космос.»</p>
+                    <div class="review-author">
+                        <div class="author-avatar">АК</div>
+                        <div>
+                            <div class="author-name">Алексей К.</div>
+                            <div class="author-role">Продакт-менеджер</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">«Йога для ума спасла меня от выгорания. Научилась останавливать поток мыслей и реально отдыхать. Спасибо, что это бесплатно!»</p>
+                    <div class="review-author">
+                        <div class="author-avatar">МС</div>
+                        <div>
+                            <div class="author-name">Мария С.</div>
+                            <div class="author-role">Дизайнер</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">«Силовая нейробика — это как CrossFit, только для мозга. Сложно, но после каждой тренировки кайф. Рекомендую всем.»</p>
+                    <div class="review-author">
+                        <div class="author-avatar">ДП</div>
+                        <div>
+                            <div class="author-name">Дмитрий П.</div>
+                            <div class="author-role">Инженер</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Пройди бесплатный нейроскрининг</h2>
+                <p>15 минут — и ты узнаешь свой текущий уровень памяти, внимания и скорости мышления. Полностью бесплатно и без обязательств.</p>
+                <button class="btn btn-primary btn-lg" onclick="openModal()">Записаться бесплатно</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Full -->
+    <section id="programs" class="section programs">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Программы</span>
+                <h2 class="section-title">Все направления клуба</h2>
+                <p class="section-desc">Выберите то, что нужно именно вам. Все занятия — бесплатно</p>
+            </div>
+            <div class="programs-list">
+                <div class="program-row">
+                    <div class="program-row-icon">🏃‍♂️</div>
+                    <div class="program-row-content">
+                        <h3>Нейрокардио</h3>
+                        <p>Тренировки на скорость мышления и концентрацию под динамичную музыку. Высокий темп, короткие интервалы, максимальная вовлечённость.</p>
+                    </div>
+                    <div class="program-row-meta">
+                        <span class="level">Все уровни</span>
+                        <span class="duration">45–60 мин</span>
+                        <span class="free-badge">Бесплатно</span>
+                    </div>
+                </div>
+                <div class="program-row">
+                    <div class="program-row-icon">💪</div>
+                    <div class="program-row-content">
+                        <h3>Силовая нейробика</h3>
+                        <p>Решение сложных логических задач на время. Прогрессия сложности, работа в парах и группах, развитие рабочей памяти.</p>
+                    </div>
+                    <div class="program-row-meta">
+                        <span class="level">Средний+</span>
+                        <span class="duration">50 мин</span>
+                        <span class="free-badge">Бесплатно</span>
+                    </div>
+                </div>
+                <div class="program-row">
+                    <div class="program-row-icon">🧠</div>
+                    <div class="program-row-content">
+                        <h3>Растяжка интеллекта</h3>
+                        <p>Креативные методики, ТРИЗ, латеральное мышление. Генерация идей, выход за рамки привычных паттернов.</p>
+                    </div>
+                    <div class="program-row-meta">
+                        <span class="level">Все уровни</span>
+                        <span class="duration">60 мин</span>
+                        <span class="free-badge">Бесплатно</span>
+                    </div>
+                </div>
+                <div class="program-row">
+                    <div class="program-row-icon">🧘</div>
+                    <div class="program-row-content">
+                        <h3>Йога для ума</h3>
+                        <p>Медитативные практики, майндфулнесс, борьба со стрессом. Восстановление внимания и эмоциональная устойчивость.</p>
+                    </div>
+                    <div class="program-row-meta">
+                        <span class="level">Все уровни</span>
+                        <span class="duration">40–50 мин</span>
+                        <span class="free-badge">Бесплатно</span>
+                    </div>
+                </div>
+                <div class="program-row">
+                    <div class="program-row-icon">📵</div>
+                    <div class="program-row-content">
+                        <h3>Детокс от инфошума</h3>
+                        <p>Цифровая гигиена и управление вниманием. Практики фокуса, работа с уведомлениями, глубокая работа без отвлечений.</p>
+                    </div>
+                    <div class="program-row-meta">
+                        <span class="level">Все уровни</span>
+                        <span class="duration">45 мин</span>
+                        <span class="free-badge">Бесплатно</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trainers -->
+    <section id="trainers" class="section trainers">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Команда</span>
+                <h2 class="section-title">Наши тренеры</h2>
+                <p class="section-desc">Нейропсихологи, когнитивные коучи и практики с подтверждённой экспертизой. Занятия бесплатные.</p>
+            </div>
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="neuro">Нейропсихологи</button>
+                <button class="filter-btn" data-filter="coach">Когнитивные коучи</button>
+                <button class="filter-btn" data-filter="mindfulness">Майндфулнесс</button>
+            </div>
+            <div class="trainers-grid">
+                <article class="trainer-card" data-category="neuro">
+                    <div class="trainer-avatar">ЕВ</div>
+                    <h3>Елена Волкова</h3>
+                    <p class="trainer-role">Нейропсихолог</p>
+                    <div class="trainer-meta">
+                        <span>Стаж 12 лет</span>
+                        <span class="rating">★ 4.9</span>
+                    </div>
+                    <p class="trainer-bio">Специалист по памяти и вниманию. Автор методик нейроскрининга.</p>
+                    <button class="btn btn-sm btn-outline" onclick="openModal()">Записаться бесплатно</button>
+                </article>
+                <article class="trainer-card" data-category="coach">
+                    <div class="trainer-avatar">ИА</div>
+                    <h3>Игорь Антонов</h3>
+                    <p class="trainer-role">Когнитивный коуч</p>
+                    <div class="trainer-meta">
+                        <span>Стаж 8 лет</span>
+                        <span class="rating">★ 4.8</span>
+                    </div>
+                    <p class="trainer-bio">Эксперт по скорости мышления и принятию решений под давлением.</p>
+                    <button class="btn btn-sm btn-outline" onclick="openModal()">Записаться бесплатно</button>
+                </article>
+                <article class="trainer-card" data-category="mindfulness">
+                    <div class="trainer-avatar">ОН</div>
+                    <h3>Ольга Никитина</h3>
+                    <p class="trainer-role">Практик майндфулнесс</p>
+                    <div class="trainer-meta">
+                        <span>Стаж 10 лет</span>
+                        <span class="rating">★ 5.0</span>
+                    </div>
+                    <p class="trainer-bio">Ведёт программы «Йога для ума» и «Детокс от инфошума».</p>
+                    <button class="btn btn-sm btn-outline" onclick="openModal()">Записаться бесплатно</button>
+                </article>
+                <article class="trainer-card" data-category="neuro">
+                    <div class="trainer-avatar">ДС</div>
+                    <h3>Дмитрий Соколов</h3>
+                    <p class="trainer-role">Нейропсихолог</p>
+                    <div class="trainer-meta">
+                        <span>Стаж 15 лет</span>
+                        <span class="rating">★ 4.9</span>
+                    </div>
+                    <p class="trainer-bio">Исследователь рабочей памяти. Ведёт «Силовую нейробику».</p>
+                    <button class="btn btn-sm btn-outline" onclick="openModal()">Записаться бесплатно</button>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule & Prices -->
+    <section id="schedule" class="section schedule">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Расписание</span>
+                <h2 class="section-title">Выберите удобное время</h2>
+                <p class="section-desc">Все занятия и абонементы — полностью бесплатно</p>
+            </div>
+
+            <div class="schedule-filters">
+                <select id="filter-program">
+                    <option value="all">Все программы</option>
+                    <option value="neurocardio">Нейрокардио</option>
+                    <option value="power">Силовая нейробика</option>
+                    <option value="stretch">Растяжка интеллекта</option>
+                    <option value="yoga">Йога для ума</option>
+                    <option value="detox">Детокс от инфошума</option>
+                </select>
+                <select id="filter-level">
+                    <option value="all">Все уровни</option>
+                    <option value="beginner">Новичок</option>
+                    <option value="pro">Профи</option>
+                </select>
+                <select id="filter-format">
+                    <option value="all">Все форматы</option>
+                    <option value="offline">Офлайн</option>
+                    <option value="online">Онлайн</option>
+                </select>
+            </div>
+
+            <div class="calendar-placeholder">
+                <div class="calendar-header">
+                    <button class="cal-nav">‹</button>
+                    <h3>Ноябрь 2026</h3>
+                    <button class="cal-nav">›</button>
+                </div>
+                <div class="calendar-grid">
+                    <div class="cal-day header">Пн</div>
+                    <div class="cal-day header">Вт</div>
+                    <div class="cal-day header">Ср</div>
+                    <div class="cal-day header">Чт</div>
+                    <div class="cal-day header">Пт</div>
+                    <div class="cal-day header">Сб</div>
+                    <div class="cal-day header">Вс</div>
+                    <div class="cal-day empty"></div>
+                    <div class="cal-day empty"></div>
+                    <div class="cal-day empty"></div>
+                    <div class="cal-day empty"></div>
+                    <div class="cal-day empty"></div>
+                    <div class="cal-day empty"></div>
+                    <div class="cal-day">1</div>
+                    <div class="cal-day">2</div>
+                    <div class="cal-day has-event">3<span class="event-dot"></span></div>
+                    <div class="cal-day">4</div>
+                    <div class="cal-day has-event">5<span class="event-dot"></span></div>
+                    <div class="cal-day">6</div>
+                    <div class="cal-day has-event">7<span class="event-dot"></span></div>
+                    <div class="cal-day">8</div>
+                    <div class="cal-day has-event">9<span class="event-dot"></span><span class="event-dot"></span></div>
+                    <div class="cal-day">10</div>
+                    <div class="cal-day has-event">11<span class="event-dot"></span></div>
+                    <div class="cal-day">12</div>
+                    <div class="cal-day">13</div>
+                    <div class="cal-day has-event">14<span class="event-dot"></span></div>
+                    <div class="cal-day today">15</div>
+                    <div class="cal-day">16</div>
+                    <div class="cal-day has-event">17<span class="event-dot"></span></div>
+                    <div class="cal-day">18</div>
+                    <div class="cal-day has-event">19<span class="event-dot"></span></div>
+                    <div class="cal-day">20</div>
+                    <div class="cal-day">21</div>
+                    <div class="cal-day has-event">22<span class="event-dot"></span></div>
+                    <div class="cal-day">23</div>
+                    <div class="cal-day">24</div>
+                    <div class="cal-day has-event">25<span class="event-dot"></span></div>
+                    <div class="cal-day">26</div>
+                    <div class="cal-day">27</div>
+                    <div class="cal-day has-event">28<span class="event-dot"></span></div>
+                    <div class="cal-day">29</div>
+                    <div class="cal-day">30</div>
+                </div>
+                <p class="calendar-note">Наведите на точку, чтобы увидеть занятия. Все тренировки — бесплатно.</p>
+            </div>
+
+            <div class="prices">
+                <h3 class="prices-title">Прайс-лист</h3>
+                <div class="price-table-wrapper">
+                    <table class="price-table">
+                        <thead>
+                            <tr>
+                                <th>Формат</th>
+                                <th>Разовое занятие</th>
+                                <th>Абонемент 8 занятий</th>
+                                <th>Безлимит (месяц)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Офлайн</td>
+                                <td class="free-cell">Бесплатно</td>
+                                <td class="free-cell">Бесплатно</td>
+                                <td class="free-cell">Бесплатно</td>
+                            </tr>
+                            <tr>
+                                <td>Онлайн</td>
+                                <td class="free-cell">Бесплатно</td>
+                                <td class="free-cell">Бесплатно</td>
+                                <td class="free-cell">Бесплатно</td>
+                            </tr>
+                            <tr>
+                                <td>Смешанный</td>
+                                <td class="free-cell">Бесплатно</td>
+                                <td class="free-cell">Бесплатно</td>
+                                <td class="free-cell">Бесплатно</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="price-note">* Все программы, нейроскрининг и доступ к личному кабинету — полностью бесплатны. Без скрытых платежей.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Neuro Cafe -->
+    <section id="cafe" class="section cafe">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Нейро-кафе</span>
+                <h2 class="section-title">Питание для мозга</h2>
+                <p class="section-desc">Специализированное меню для поддержки когнитивных функций. Часть позиций — бесплатно для участников клуба.</p>
+            </div>
+            <div class="cafe-grid">
+                <article class="cafe-card">
+                    <div class="cafe-icon">🫐</div>
+                    <h3>Смузи для памяти</h3>
+                    <p>Черника, грецкий орех, шпинат, кокосовое молоко. Богаты антиоксидантами и омега-3.</p>
+                    <div class="cafe-price free">Бесплатно*</div>
+                </article>
+                <article class="cafe-card">
+                    <div class="cafe-icon">🥑</div>
+                    <h3>Кето-обеды для энергии</h3>
+                    <p>Высокожировые блюда без скачков сахара. Стабильная энергия на весь день.</p>
+                    <div class="cafe-price">от 450 ₽</div>
+                </article>
+                <article class="cafe-card">
+                    <div class="cafe-icon">☕</div>
+                    <h3>Ноотропный кофе</h3>
+                    <p>Кофе с L-теанином, львиной гривой и небольшим количеством MCT. Фокус без нервозности.</p>
+                    <div class="cafe-price free">Бесплатно*</div>
+                </article>
+                <article class="cafe-card">
+                    <div class="cafe-icon">🍵</div>
+                    <h3>Фокус-чай</h3>
+                    <p>Зелёный чай, розмарин, мята. Мягкая стимуляция и ясность ума.</p>
+                    <div class="cafe-price free">Бесплатно*</div>
+                </article>
+            </div>
+            <p class="cafe-note">* Бесплатно для участников с активным абонементом (все абонементы бесплатные).</p>
+        </div>
+    </section>
+
+    <!-- Blog -->
+    <section id="blog" class="section blog">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Блог</span>
+                <h2 class="section-title">Полезные материалы</h2>
+            </div>
+            <div class="blog-categories">
+                <span class="blog-cat">Нейронаука простыми словами</span>
+                <span class="blog-cat">Кейсы: до/после</span>
+                <span class="blog-cat">Интервью с тренерами</span>
+                <span class="blog-cat">Лайфхаки для работы</span>
+            </div>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);"></div>
+                    <div class="blog-content">
+                        <span class="blog-tag">Нейронаука</span>
+                        <h3>Как работает рабочая память и почему её можно прокачать</h3>
+                        <p>Простыми словами о том, что такое рабочая память и какие упражнения реально её улучшают.</p>
+                        <a href="#" class="blog-link">Читать →</a>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #06b6d4, #3b82f6);"></div>
+                    <div class="blog-content">
+                        <span class="blog-tag">Кейс</span>
+                        <h3>От «забываю всё» до +38% памяти за 10 недель</h3>
+                        <p>История участницы, которая совмещала Нейрокардио и практику внимания.</p>
+                        <a href="#" class="blog-link">Читать →</a>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #10b981, #059669);"></div>
+                    <div class="blog-content">
+                        <span class="blog-tag">Лайфхак</span>
+                        <h3>5 правил цифровой гигиены, которые реально работают</h3>
+                        <p>Как перестать тонуть в уведомлениях и вернуть контроль над вниманием.</p>
+                        <a href="#" class="blog-link">Читать →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Cabinet Preview -->
+    <section id="cabinet" class="section cabinet">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Личный кабинет</span>
+                <h2 class="section-title">Ваш прогресс всегда под рукой</h2>
+                <p class="section-desc">После бесплатной регистрации вы получаете доступ к аналитике и управлению тренировками</p>
+            </div>
+            <div class="cabinet-preview">
+                <div class="cabinet-tabs">
+                    <button class="tab active">Мой прогресс</button>
+                    <button class="tab">Мои тренировки</button>
+                    <button class="tab">Расписание</button>
+                    <button class="tab">Бонусы</button>
+                </div>
+                <div class="cabinet-content">
+                    <div class="progress-cards">
+                        <div class="progress-card">
+                            <div class="progress-label">Память</div>
+                            <div class="progress-value">+18%</div>
+                            <div class="progress-bar"><div class="fill" style="width: 68%"></div></div>
+                        </div>
+                        <div class="progress-card">
+                            <div class="progress-label">Скорость</div>
+                            <div class="progress-value">+12%</div>
+                            <div class="progress-bar"><div class="fill" style="width: 55%"></div></div>
+                        </div>
+                        <div class="progress-card">
+                            <div class="progress-label">Внимание</div>
+                            <div class="progress-value">+22%</div>
+                            <div class="progress-bar"><div class="fill" style="width: 74%"></div></div>
+                        </div>
+                        <div class="progress-card">
+                            <div class="progress-label">IQ (оценка)</div>
+                            <div class="progress-value">118</div>
+                            <div class="progress-bar"><div class="fill" style="width: 82%"></div></div>
+                        </div>
+                    </div>
+                    <p class="cabinet-note">Войдите или зарегистрируйтесь бесплатно, чтобы увидеть полную аналитику, историю тренировок и реферальную программу.</p>
+                    <button class="btn btn-primary" onclick="openModal()">Войти в кабинет бесплатно</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#home" class="logo">
+                        <span class="logo-icon">🧠</span>
+                        <span class="logo-text">Neuro<span>Gym</span></span>
+                    </a>
+                    <p>Фитнес-клуб для мозга. Тренируем интеллект научно и полностью бесплатно.</p>
+                    <div class="socials">
+                        <a href="#" aria-label="Telegram">TG</a>
+                        <a href="#" aria-label="VK">VK</a>
+                        <a href="#" aria-label="YouTube">YT</a>
+                        <a href="#" aria-label="Instagram">IG</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Навигация</h4>
+                    <a href="#programs">Программы</a>
+                    <a href="#trainers">Тренеры</a>
+                    <a href="#schedule">Расписание</a>
+                    <a href="#cafe">Нейро-кафе</a>
+                    <a href="#blog">Блог</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Контакты</h4>
+                    <p>Москва, ул. Примерная, 12</p>
+                    <p>+7 (495) 123-45-67</p>
+                    <p>hello@neurogym.ru</p>
+                    <div class="map-placeholder">
+                        <span>📍 Карта проезда</span>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Документы</h4>
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Условия использования</a>
+                    <a href="#">Оферта</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 NeuroGym. Все права защищены. Все услуги бесплатны.</p>
+                <button class="btn btn-primary" onclick="openModal()">Записаться бесплатно</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <h2>Бесплатная запись</h2>
+            <p>Оставьте контакты — мы перезвоним в течение 15 минут и подберём удобное время. Всё полностью бесплатно.</p>
+            <form class="modal-form" onsubmit="submitForm(event)">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="tel" placeholder="Телефон" required>
+                <input type="email" placeholder="Email (необязательно)">
+                <select>
+                    <option value="">Интересует программа...</option>
+                    <option>Нейрокардио</option>
+                    <option>Силовая нейробика</option>
+                    <option>Растяжка интеллекта</option>
+                    <option>Йога для ума</option>
+                    <option>Детокс от инфошума</option>
+                    <option>Пока не знаю</option>
+                </select>
+                <button type="submit" class="btn btn-primary btn-block">Записаться бесплатно</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
