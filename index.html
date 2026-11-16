@@ -481,6 +481,69 @@
             }
         };
 
+        const exercisesEN = {
+            neurocardio: {
+                title: "Neurocardio",
+                text: "How to do:\n\n1. Play dynamic music (120–140 BPM).\n2. For 45 seconds, name out loud the colors you see around you, but only those that are different from the color of the clothes you are wearing.\n3. 15 seconds rest.\n4. Next 45 seconds: look at objects and quickly name their opposite (table — chair, light — darkness, etc.).\n5. Repeat the cycle 8–10 times. Use a timer.\n\nDevelops attention switching speed and resistance to distractions."
+            },
+            power: {
+                title: "Power neurobics",
+                text: "How to do:\n\n1. Read the sequence: 7 – 2 – 9 – 4 – 1 – 6.\n2. Close your eyes and repeat it backwards.\n3. Add one more number and repeat.\n4. Next task: in 60 seconds come up with as many ways as possible to use an ordinary brick (except for building).\n5. Write down the ideas. Later compare with yesterday’s result.\n\nTrains working memory and idea generation under time pressure."
+            },
+            stretch: {
+                title: "Mind stretch",
+                text: "How to do:\n\n1. Choose an ordinary life problem (for example, “how to get less distracted by the phone”).\n2. In 3 minutes come up with 10 of the strangest and most absurd solutions (the more absurd the better).\n3. From these 10, choose 1–2 that can be adapted into a real action.\n4. Bonus: take any object on the table and describe it as if you are an alien seeing it for the first time.\n\nHelps break out of habitual thinking patterns."
+            },
+            yoga: {
+                title: "Mind yoga",
+                text: "How to do:\n\n1. Sit comfortably, close your eyes.\n2. For 2 minutes just notice your breathing without changing it.\n3. Next 3 minutes: every time a thought comes, mentally say “thought” and return to the breath.\n4. Open your eyes. Look at one object for 30 seconds and describe it in as much detail as possible (color, shape, texture, highlights).\n5. Repeat with eyes closed, recalling the details.\n\nReduces anxiety and restores the ability to concentrate."
+            },
+            numbers: {
+                title: "Reverse counting",
+                text: "How to do:\n\n1. Start from 100.\n2. Subtract 7 out loud: 100, 93, 86, 79 and so on.\n3. Continue for 2 minutes without stopping.\n4. If you make a mistake — start again from the point where you erred.\n5. Do 3 sets with a 30-second break.\n\nTrains working memory and concentration."
+            },
+            associations: {
+                title: "Association chain",
+                text: "How to do:\n\n1. Take any word (for example, “apple”).\n2. Say the first word that comes to mind.\n3. From that word — the next one, and so on for 20 words.\n4. Write down the chain.\n5. After 5 minutes try to restore it from memory.\n\nDevelops flexibility of thinking and associative memory."
+            },
+            visual: {
+                title: "Visual memory",
+                text: "How to do:\n\n1. Look at the room for 30 seconds, trying to remember as many details as possible.\n2. Close your eyes and name 10 objects you saw.\n3. Open your eyes and check yourself.\n4. Repeat with another part of the room or a photograph.\n\nImproves visual memory and attention to detail."
+            },
+            words: {
+                title: "Words speed",
+                text: "How to do:\n\n1. Set a timer for 60 seconds.\n2. Name out loud as many words as possible starting with the letter “S”.\n3. Write down the number.\n4. Repeat with another letter (for example, “K”).\n5. Try to improve your result each time.\n\nTrains verbal fluency and word retrieval speed."
+            },
+            logic: {
+                title: "Logical sequences",
+                text: "How to do:\n\n1. Continue the series: 2, 4, 8, 16, …\n2. Next: 1, 1, 2, 3, 5, 8, …\n3. Invent your own series of 6 numbers with a pattern.\n4. Ask someone to continue your series or continue it yourself an hour later.\n\nDevelops logical thinking and pattern recognition."
+            },
+            breath: {
+                title: "4-7-8 breathing",
+                text: "How to do:\n\n1. Sit comfortably.\n2. Inhale through the nose for 4 counts.\n3. Hold the breath for 7 counts.\n4. Slowly exhale through the mouth for 8 counts.\n5. Repeat the cycle 6–8 times.\n\nReduces stress and improves concentration."
+            },
+            body: {
+                title: "Body scan",
+                text: "How to do:\n\n1. Lie down or sit comfortably, close your eyes.\n2. Start with the toes — notice sensations for 15 seconds.\n3. Slowly move upward: feet, calves, knees, thighs, abdomen, chest, arms, neck, face.\n4. On each area pause and simply observe the sensations.\n5. At the end take a deep inhale and exhale.\n\nHelps reduce anxiety and bring attention back to the body."
+            },
+            story: {
+                title: "Story from words",
+                text: "How to do:\n\n1. Take 5 random words (for example: umbrella, cat, space, soup, bicycle).\n2. In 3 minutes invent a coherent story that includes all these words.\n3. Tell the story out loud.\n4. The next day try to recall the story.\n\nDevelops creativity and the ability to connect ideas."
+            },
+            opposite: {
+                title: "Opposites",
+                text: "How to do:\n\n1. Name a word and immediately its opposite (hot — cold).\n2. Do this for 2 minutes without pauses.\n3. If you get stuck — skip and continue.\n4. Repeat with abstract concepts (success — failure, freedom — dependence).\n\nTrains thinking speed and flexibility."
+            },
+            focus: {
+                title: "Focus point",
+                text: "How to do:\n\n1. Choose a small point on the wall or on the screen.\n2. Look at it for 60 seconds without looking away.\n3. If thoughts wander — gently return attention to the point.\n4. Repeat 3 times with a 20-second break.\n5. Gradually increase the time to 2 minutes.\n\nStrengthens attention stability."
+            },
+            detox: {
+                title: "Info detox",
+                text: "How to do:\n\n1. Turn off all notifications on the phone for 25 minutes.\n2. Set a timer for 25 minutes and work on one task without switching (reading, work, cleaning).\n3. If you want to check the phone — write down on paper what exactly you wanted to check, and continue.\n4. After the timer look at the list and decide what really needs to be done now.\n5. Repeat 2–3 times a day.\n\nRestores the ability to concentrate deeply and reduces impulsive phone checks."
+            }
+        };
+
         let isSpeaking = false;
 
         document.querySelectorAll('.program-row').forEach(row => {
@@ -492,7 +555,8 @@
                 const t = translations[lang] || translations.ru;
                 const title = (t.exercises && t.exercises[id]) ? t.exercises[id].title : ex.title;
                 document.getElementById('exTitle').textContent = title;
-                document.getElementById('exContent').innerHTML = ex.text.replace(/\\n/g, '<br>');
+                const textSource = (lang === 'en' && exercisesEN[id]) ? exercisesEN[id].text : ex.text;
+                document.getElementById('exContent').innerHTML = textSource.replace(/\\n/g, '<br>');
                 document.getElementById('exerciseModal').classList.add('open');
                 document.body.style.overflow = 'hidden';
                 const btn = document.getElementById('listenBtn');
