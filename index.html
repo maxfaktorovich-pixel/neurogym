@@ -621,7 +621,32 @@
                     story: { title: "История из слов", desc: "Креативность и связность мышления" },
                     opposite: { title: "Противоположности", desc: "Скорость мышления и гибкость" },
                     focus: { title: "Точка фокуса", desc: "Тренировка устойчивости внимания" }
-                }
+                },
+                navHome: "Главная",
+                navPrograms: "Программы",
+                navSchedule: "Расписание",
+                navCafe: "Нейро-кафе",
+                navBlog: "Блог",
+                navCabinet: "Кабинет",
+                freeForAll: "Бесплатно для всех",
+                memory: "Улучшение памяти",
+                speed: "Скорость реакции",
+                smoothie: "Смузи для памяти",
+                smoothieDesc: "Черника, грецкий орех, шпинат, кокосовое молоко.",
+                coffee: "Ноотропный кофе",
+                coffeeDesc: "Кофе + L-теанин. Фокус без нервозности.",
+                tea: "Фокус-чай",
+                teaDesc: "Зелёный чай, розмарин, мята.",
+                blogMemory: "Как работает рабочая память",
+                blogMemoryDesc: "Простыми словами о том, почему память можно тренировать.",
+                blogHygiene: "5 правил цифровой гигиены",
+                blogHygieneDesc: "Как меньше отвлекаться на уведомления.",
+                neuroscience: "Нейронаука",
+                lifehack: "Лайфхак",
+                footerDesc: "Фитнес-клуб для мозга. Тренируем интеллект бесплатно.",
+                navigation: "Навигация",
+                contacts: "Контакты",
+                copyright: "© 2026 NeuroGym. Все упражнения бесплатны."
             },
             en: {
                 heroTitle: "Train your brain,<br>not just your muscles",
@@ -663,7 +688,32 @@
                     story: { title: "Story from words", desc: "Creativity and connecting ideas" },
                     opposite: { title: "Opposites", desc: "Thinking speed and flexibility" },
                     focus: { title: "Focus point", desc: "Attention stability training" }
-                }
+                },
+                navHome: "Home",
+                navPrograms: "Programs",
+                navSchedule: "Schedule",
+                navCafe: "Neuro Cafe",
+                navBlog: "Blog",
+                navCabinet: "Cabinet",
+                freeForAll: "Free for everyone",
+                memory: "Memory improvement",
+                speed: "Reaction speed",
+                smoothie: "Memory smoothie",
+                smoothieDesc: "Blueberry, walnut, spinach, coconut milk.",
+                coffee: "Nootropic coffee",
+                coffeeDesc: "Coffee + L-theanine. Focus without nervousness.",
+                tea: "Focus tea",
+                teaDesc: "Green tea, rosemary, mint.",
+                blogMemory: "How working memory works",
+                blogMemoryDesc: "In simple words about why memory can be trained.",
+                blogHygiene: "5 rules of digital hygiene",
+                blogHygieneDesc: "How to get less distracted by notifications.",
+                neuroscience: "Neuroscience",
+                lifehack: "Lifehack",
+                footerDesc: "Brain fitness club. We train intelligence for free.",
+                navigation: "Navigation",
+                contacts: "Contacts",
+                copyright: "© 2026 NeuroGym. All exercises are free."
             }
         };
 
@@ -715,6 +765,37 @@
             // Listen button
             const listenBtn = document.getElementById('listenBtn');
             if (listenBtn && !isSpeaking) listenBtn.textContent = t.listen;
+            // Navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            if (navLinks[0]) navLinks[0].textContent = t.navHome;
+            if (navLinks[1]) navLinks[1].textContent = t.navPrograms;
+            if (navLinks[2]) navLinks[2].textContent = t.navSchedule;
+            if (navLinks[3]) navLinks[3].textContent = t.navCafe;
+            if (navLinks[4]) navLinks[4].textContent = t.navBlog;
+            if (navLinks[5]) navLinks[5].textContent = t.navCabinet;
+            // Hero badge and stats
+            const badge = document.querySelector('.hero-badge');
+            if (badge) badge.textContent = t.freeForAll;
+            const stats = document.querySelectorAll('.stat-label');
+            if (stats[0]) stats[0].textContent = t.memory;
+            if (stats[1]) stats[1].textContent = t.speed;
+            // Cafe cards
+            const cafeCards = document.querySelectorAll('.cafe-card');
+            if (cafeCards[0]) { cafeCards[0].querySelector('h3').textContent = t.smoothie; cafeCards[0].querySelector('p').textContent = t.smoothieDesc; }
+            if (cafeCards[1]) { cafeCards[1].querySelector('h3').textContent = t.coffee; cafeCards[1].querySelector('p').textContent = t.coffeeDesc; }
+            if (cafeCards[2]) { cafeCards[2].querySelector('h3').textContent = t.tea; cafeCards[2].querySelector('p').textContent = t.teaDesc; }
+            // Blog cards
+            const blogCards = document.querySelectorAll('.blog-card');
+            if (blogCards[0]) { blogCards[0].querySelector('.blog-tag').textContent = t.neuroscience; blogCards[0].querySelector('h3').textContent = t.blogMemory; blogCards[0].querySelector('p').textContent = t.blogMemoryDesc; }
+            if (blogCards[1]) { blogCards[1].querySelector('.blog-tag').textContent = t.lifehack; blogCards[1].querySelector('h3').textContent = t.blogHygiene; blogCards[1].querySelector('p').textContent = t.blogHygieneDesc; }
+            // Footer
+            const footerDesc = document.querySelector('.footer-brand p');
+            if (footerDesc) footerDesc.textContent = t.footerDesc;
+            const footerCols = document.querySelectorAll('.footer-col h4');
+            if (footerCols[0]) footerCols[0].textContent = t.navigation;
+            if (footerCols[1]) footerCols[1].textContent = t.contacts;
+            const copyright = document.querySelector('.footer-bottom p');
+            if (copyright) copyright.textContent = t.copyright;
             localStorage.setItem('lang', lang);
         }
 
