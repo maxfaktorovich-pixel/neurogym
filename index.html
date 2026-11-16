@@ -486,14 +486,17 @@
         document.querySelectorAll('.program-row').forEach(row => {
             row.addEventListener('click', () => {
                 const id = row.dataset.id;
+                const lang = localStorage.getItem('lang') || 'ru';
                 const ex = exercises[id];
                 if (!ex) return;
-                document.getElementById('exTitle').textContent = ex.title;
+                const t = translations[lang] || translations.ru;
+                const title = (t.exercises && t.exercises[id]) ? t.exercises[id].title : ex.title;
+                document.getElementById('exTitle').textContent = title;
                 document.getElementById('exContent').innerHTML = ex.text.replace(/\\n/g, '<br>');
                 document.getElementById('exerciseModal').classList.add('open');
                 document.body.style.overflow = 'hidden';
                 const btn = document.getElementById('listenBtn');
-                btn.textContent = '🔊 Прослушать';
+                btn.textContent = t.listen || '🔊 Прослушать';
                 btn.classList.remove('playing');
                 if (speechSynthesis.speaking) speechSynthesis.cancel();
                 isSpeaking = false;
@@ -505,7 +508,9 @@
             document.body.style.overflow = '';
             if (speechSynthesis.speaking) speechSynthesis.cancel();
             isSpeaking = false;
-            document.getElementById('listenBtn').textContent = '🔊 Прослушать';
+            const lang = localStorage.getItem('lang') || 'ru';
+            const t = translations[lang] || translations.ru;
+            document.getElementById('listenBtn').textContent = t.listen || '🔊 Прослушать';
             document.getElementById('listenBtn').classList.remove('playing');
         }
 
@@ -526,7 +531,9 @@
             if (isSpeaking) {
                 speechSynthesis.cancel();
                 isSpeaking = false;
-                btn.textContent = '🔊 Прослушать';
+                const lang = localStorage.getItem('lang') || 'ru';
+                const t = translations[lang] || translations.ru;
+                btn.textContent = t.listen || '🔊 Прослушать';
                 btn.classList.remove('playing');
                 return;
             }
@@ -541,12 +548,16 @@
             utterance.volume = 1.0;
             utterance.onend = () => {
                 isSpeaking = false;
-                btn.textContent = '🔊 Прослушать';
+                const lang = localStorage.getItem('lang') || 'ru';
+                const t = translations[lang] || translations.ru;
+                btn.textContent = t.listen || '🔊 Прослушать';
                 btn.classList.remove('playing');
             };
             speechSynthesis.speak(utterance);
             isSpeaking = true;
-            btn.textContent = '⏹ Остановить';
+            const lang = localStorage.getItem('lang') || 'ru';
+            const t = translations[lang] || translations.ru;
+            btn.textContent = t.stop || '⏹ Остановить';
             btn.classList.add('playing');
         }
 
@@ -573,7 +584,9 @@
                 document.getElementById('exerciseModal').classList.add('open');
                 document.body.style.overflow = 'hidden';
                 const btn = document.getElementById('listenBtn');
-                btn.textContent = '🔊 Прослушать';
+                const lang = localStorage.getItem('lang') || 'ru';
+                const t = translations[lang] || translations.ru;
+                btn.textContent = t.listen || '🔊 Прослушать';
                 btn.classList.remove('playing');
                 if (speechSynthesis.speaking) speechSynthesis.cancel();
                 isSpeaking = false;
@@ -721,21 +734,28 @@
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.lang === lang);
             });
-            const t = translations[lang];
+            const t = translations[lang] || translations.ru;
             // Hero
-            document.querySelector('.hero-title').innerHTML = t.heroTitle;
-            document.querySelector('.hero-subtitle').textContent = t.heroSubtitle;
-            document.querySelector('.hero-actions .btn').textContent = t.watchExercises;
+            const heroTitle = document.querySelector('.hero-title');
+            if (heroTitle) heroTitle.innerHTML = t.heroTitle;
+            const heroSub = document.querySelector('.hero-subtitle');
+            if (heroSub) heroSub.textContent = t.heroSubtitle;
+            const heroBtn = document.querySelector('.hero-actions .btn');
+            if (heroBtn) heroBtn.textContent = t.watchExercises;
             // About
-            document.querySelector('#about .section-title').textContent = t.aboutTitle;
-            document.querySelector('#about .section-desc').textContent = t.aboutDesc;
+            const aboutTitle = document.querySelector('#about .section-title');
+            if (aboutTitle) aboutTitle.textContent = t.aboutTitle;
+            const aboutDesc = document.querySelector('#about .section-desc');
+            if (aboutDesc) aboutDesc.textContent = t.aboutDesc;
             const aboutCards = document.querySelectorAll('.about-card');
             if (aboutCards[0]) { aboutCards[0].querySelector('h3').textContent = t.scientific; aboutCards[0].querySelector('p').textContent = t.scientificDesc; }
             if (aboutCards[1]) { aboutCards[1].querySelector('h3').textContent = t.action; aboutCards[1].querySelector('p').textContent = t.actionDesc; }
             if (aboutCards[2]) { aboutCards[2].querySelector('h3').textContent = t.freeAll; aboutCards[2].querySelector('p').textContent = t.freeAllDesc; }
             // Programs
-            document.querySelector('#programs .section-title').textContent = t.programsTitle;
-            document.querySelector('#programs .section-desc').textContent = t.programsDesc;
+            const progTitle = document.querySelector('#programs .section-title');
+            if (progTitle) progTitle.textContent = t.programsTitle;
+            const progDesc = document.querySelector('#programs .section-desc');
+            if (progDesc) progDesc.textContent = t.programsDesc;
             document.querySelectorAll('.free-badge').forEach(el => el.textContent = t.free);
             // Translate exercise cards
             document.querySelectorAll('.program-row').forEach(row => {
@@ -799,16 +819,20 @@
             localStorage.setItem('lang', lang);
         }
 
-        // Restore language
-        const savedLang = localStorage.getItem('lang') || 'ru';
-        if (savedLang === 'en') setLanguage('en');
-
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav');
         burger?.addEventListener('click', () => nav.classList.toggle('open'));
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => nav.classList.remove('open'));
         });
+
+        // Force apply language on load
+        (function applySavedLanguage() {
+            const saved = localStorage.getItem('lang') || 'ru';
+            if (typeof setLanguage === 'function') {
+                setLanguage(saved);
+            }
+        })();
     </script>
 </body>
 </html>
