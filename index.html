@@ -731,7 +731,8 @@
                 cabinetTag: "Кабинет",
                 callButton: "Позвонить +7 (913) 478-08-92",
                 scheduleNote: "Групповые занятия проводятся по запросу. Свяжитесь с нами по телефону, чтобы узнать ближайшие слоты.",
-                heroImageAlt: "Фитнес-клуб для мозга"
+                heroImageAlt: "Фитнес-клуб для мозга",
+                programsTag: "Программы"
             },
             en: {
                 heroTitle: "Train your brain,<br>not just your muscles",
@@ -806,7 +807,8 @@
                 cabinetTag: "Cabinet",
                 callButton: "Call +7 (913) 478-08-92",
                 scheduleNote: "Group classes are held on request. Contact us by phone to find out the nearest slots.",
-                heroImageAlt: "Brain fitness club"
+                heroImageAlt: "Brain fitness club",
+                programsTag: "Programs"
             }
         };
 
@@ -889,6 +891,8 @@
             if (blogCards[0]) { blogCards[0].querySelector('.blog-tag').textContent = t.neuroscience; blogCards[0].querySelector('h3').textContent = t.blogMemory; blogCards[0].querySelector('p').textContent = t.blogMemoryDesc; }
             if (blogCards[1]) { blogCards[1].querySelector('.blog-tag').textContent = t.lifehack; blogCards[1].querySelector('h3').textContent = t.blogHygiene; blogCards[1].querySelector('p').textContent = t.blogHygieneDesc; }
             // Section tags
+            const programsTag = document.querySelector('#programs .section-tag');
+            if (programsTag) programsTag.textContent = t.programsTag;
             const aboutTag = document.querySelector('#about .section-tag');
             if (aboutTag) aboutTag.textContent = t.aboutTag;
             const scheduleTag = document.querySelector('#schedule .section-tag');
