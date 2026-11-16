@@ -604,7 +604,24 @@
                 cabinetTitle: "Ваш прогресс",
                 cabinetDesc: "Следите за результатами тренировок. Функция в разработке.",
                 listen: "🔊 Прослушать",
-                stop: "⏹ Остановить"
+                stop: "⏹ Остановить",
+                exercises: {
+                    neurocardio: { title: "Нейрокардио", desc: "Интервальная тренировка внимания и скорости мышления" },
+                    power: { title: "Силовая нейробика", desc: "Рабочая память и генерация идей на время" },
+                    stretch: { title: "Растяжка интеллекта", desc: "Креативность и выход за рамки привычного" },
+                    yoga: { title: "Йога для ума", desc: "Осознанность и восстановление внимания" },
+                    detox: { title: "Детокс от инфошума", desc: "Глубокая концентрация без отвлечений" },
+                    numbers: { title: "Обратный счёт", desc: "Тренировка рабочей памяти и концентрации" },
+                    associations: { title: "Цепочка ассоциаций", desc: "Развитие гибкости мышления и памяти" },
+                    visual: { title: "Визуальная память", desc: "Запоминание деталей и их воспроизведение" },
+                    words: { title: "Слова на скорость", desc: "Беглость речи и скорость поиска слов" },
+                    logic: { title: "Логические последовательности", desc: "Поиск закономерностей" },
+                    breath: { title: "Дыхание 4-7-8", desc: "Снижение стресса и улучшение фокуса" },
+                    body: { title: "Сканирование тела", desc: "Осознанность и снижение тревоги" },
+                    story: { title: "История из слов", desc: "Креативность и связность мышления" },
+                    opposite: { title: "Противоположности", desc: "Скорость мышления и гибкость" },
+                    focus: { title: "Точка фокуса", desc: "Тренировка устойчивости внимания" }
+                }
             },
             en: {
                 heroTitle: "Train your brain,<br>not just your muscles",
@@ -629,7 +646,24 @@
                 cabinetTitle: "Your progress",
                 cabinetDesc: "Track your training results. Feature in development.",
                 listen: "🔊 Listen",
-                stop: "⏹ Stop"
+                stop: "⏹ Stop",
+                exercises: {
+                    neurocardio: { title: "Neurocardio", desc: "Interval training for attention and thinking speed" },
+                    power: { title: "Power neurobics", desc: "Working memory and idea generation under time pressure" },
+                    stretch: { title: "Mind stretch", desc: "Creativity and thinking outside the box" },
+                    yoga: { title: "Mind yoga", desc: "Mindfulness and attention recovery" },
+                    detox: { title: "Info detox", desc: "Deep focus without distractions" },
+                    numbers: { title: "Reverse counting", desc: "Working memory and concentration training" },
+                    associations: { title: "Association chain", desc: "Flexibility of thinking and memory" },
+                    visual: { title: "Visual memory", desc: "Remembering details and recalling them" },
+                    words: { title: "Words speed", desc: "Verbal fluency and word retrieval speed" },
+                    logic: { title: "Logical sequences", desc: "Finding patterns" },
+                    breath: { title: "4-7-8 breathing", desc: "Stress reduction and better focus" },
+                    body: { title: "Body scan", desc: "Mindfulness and anxiety reduction" },
+                    story: { title: "Story from words", desc: "Creativity and connecting ideas" },
+                    opposite: { title: "Opposites", desc: "Thinking speed and flexibility" },
+                    focus: { title: "Focus point", desc: "Attention stability training" }
+                }
             }
         };
 
@@ -653,6 +687,16 @@
             document.querySelector('#programs .section-title').textContent = t.programsTitle;
             document.querySelector('#programs .section-desc').textContent = t.programsDesc;
             document.querySelectorAll('.free-badge').forEach(el => el.textContent = t.free);
+            // Translate exercise cards
+            document.querySelectorAll('.program-row').forEach(row => {
+                const id = row.dataset.id;
+                if (t.exercises && t.exercises[id]) {
+                    const h3 = row.querySelector('h3');
+                    const p = row.querySelector('p');
+                    if (h3) h3.textContent = t.exercises[id].title;
+                    if (p) p.textContent = t.exercises[id].desc;
+                }
+            });
             // Other sections
             const schedule = document.querySelector('#schedule .section-title');
             if (schedule) schedule.textContent = t.scheduleTitle;
