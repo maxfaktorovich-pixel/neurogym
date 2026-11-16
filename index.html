@@ -587,7 +587,24 @@
                 watchExercises: "Смотреть упражнения",
                 programsTitle: "Выберите упражнение",
                 programsDesc: "Нажмите на карточку — откроется описание. Можно читать или прослушать.",
-                free: "Бесплатно"
+                free: "Бесплатно",
+                aboutTitle: "Философия NeuroGym",
+                aboutDesc: "Мы не качаем бицепсы. Мы прокачиваем нейронные сети. И всё это — бесплатно.",
+                scientific: "Научный подход",
+                scientificDesc: "Все программы основаны на доказательных методиках тренировки когнитивных функций.",
+                action: "Сразу в дело",
+                actionDesc: "Нажмите на программу — читайте или слушайте упражнение и делайте прямо сейчас. Без записи.",
+                freeAll: "Полностью бесплатно",
+                freeAllDesc: "Все упражнения доступны без оплаты и регистрации.",
+                scheduleTitle: "Занятия",
+                scheduleDesc: "Все упражнения можно делать самостоятельно в любое время.",
+                cafeTitle: "Питание для мозга",
+                cafeDesc: "Идеи для перекусов, которые поддерживают внимание и память.",
+                blogTitle: "Полезные материалы",
+                cabinetTitle: "Ваш прогресс",
+                cabinetDesc: "Следите за результатами тренировок. Функция в разработке.",
+                listen: "🔊 Прослушать",
+                stop: "⏹ Остановить"
             },
             en: {
                 heroTitle: "Train your brain,<br>not just your muscles",
@@ -595,7 +612,24 @@
                 watchExercises: "View exercises",
                 programsTitle: "Choose an exercise",
                 programsDesc: "Click a card — the description will open. You can read or listen.",
-                free: "Free"
+                free: "Free",
+                aboutTitle: "NeuroGym Philosophy",
+                aboutDesc: "We don't build biceps. We train neural networks. And it's all free.",
+                scientific: "Scientific approach",
+                scientificDesc: "All programs are based on evidence-based cognitive training methods.",
+                action: "Just do it",
+                actionDesc: "Click a program — read or listen to the exercise and do it right now. No sign-up.",
+                freeAll: "Completely free",
+                freeAllDesc: "All exercises are available without payment or registration.",
+                scheduleTitle: "Classes",
+                scheduleDesc: "All exercises can be done independently at any time.",
+                cafeTitle: "Brain nutrition",
+                cafeDesc: "Ideas for snacks that support attention and memory.",
+                blogTitle: "Useful materials",
+                cabinetTitle: "Your progress",
+                cabinetDesc: "Track your training results. Feature in development.",
+                listen: "🔊 Listen",
+                stop: "⏹ Stop"
             }
         };
 
@@ -604,12 +638,39 @@
                 btn.classList.toggle('active', btn.dataset.lang === lang);
             });
             const t = translations[lang];
+            // Hero
             document.querySelector('.hero-title').innerHTML = t.heroTitle;
             document.querySelector('.hero-subtitle').textContent = t.heroSubtitle;
             document.querySelector('.hero-actions .btn').textContent = t.watchExercises;
+            // About
+            document.querySelector('#about .section-title').textContent = t.aboutTitle;
+            document.querySelector('#about .section-desc').textContent = t.aboutDesc;
+            const aboutCards = document.querySelectorAll('.about-card');
+            if (aboutCards[0]) { aboutCards[0].querySelector('h3').textContent = t.scientific; aboutCards[0].querySelector('p').textContent = t.scientificDesc; }
+            if (aboutCards[1]) { aboutCards[1].querySelector('h3').textContent = t.action; aboutCards[1].querySelector('p').textContent = t.actionDesc; }
+            if (aboutCards[2]) { aboutCards[2].querySelector('h3').textContent = t.freeAll; aboutCards[2].querySelector('p').textContent = t.freeAllDesc; }
+            // Programs
             document.querySelector('#programs .section-title').textContent = t.programsTitle;
             document.querySelector('#programs .section-desc').textContent = t.programsDesc;
             document.querySelectorAll('.free-badge').forEach(el => el.textContent = t.free);
+            // Other sections
+            const schedule = document.querySelector('#schedule .section-title');
+            if (schedule) schedule.textContent = t.scheduleTitle;
+            const scheduleDesc = document.querySelector('#schedule .section-desc');
+            if (scheduleDesc) scheduleDesc.textContent = t.scheduleDesc;
+            const cafe = document.querySelector('#cafe .section-title');
+            if (cafe) cafe.textContent = t.cafeTitle;
+            const cafeDesc = document.querySelector('#cafe .section-desc');
+            if (cafeDesc) cafeDesc.textContent = t.cafeDesc;
+            const blog = document.querySelector('#blog .section-title');
+            if (blog) blog.textContent = t.blogTitle;
+            const cabinet = document.querySelector('#cabinet .section-title');
+            if (cabinet) cabinet.textContent = t.cabinetTitle;
+            const cabinetDesc = document.querySelector('#cabinet .section-desc');
+            if (cabinetDesc) cabinetDesc.textContent = t.cabinetDesc;
+            // Listen button
+            const listenBtn = document.getElementById('listenBtn');
+            if (listenBtn && !isSpeaking) listenBtn.textContent = t.listen;
             localStorage.setItem('lang', lang);
         }
 
