@@ -16,6 +16,9 @@
         .exercise-modal li { margin: 8px 0; }
         .listen-btn { margin-top: 16px; display: inline-flex; align-items: center; gap: 8px; }
         .listen-btn.playing { background: #10b981; }
+        .lang-switch { display: flex; gap: 4px; }
+        .lang-btn { background: transparent; border: 1px solid var(--border); color: var(--text-muted); padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 13px; }
+        .lang-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
     </style>
 </head>
 <body>
@@ -34,6 +37,10 @@
                 <a href="#blog" class="nav-link">Блог</a>
                 <a href="#cabinet" class="nav-link">Кабинет</a>
             </nav>
+            <div class="lang-switch" style="margin-right:16px;">
+                <button class="lang-btn active" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+                <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+            </div>
             <a href="tel:+79134780892" class="btn btn-outline" style="margin-right:12px;">+7 (913) 478-08-92</a>
             <button class="burger" id="burger" aria-label="Меню">
                 <span></span><span></span><span></span>
@@ -572,6 +579,43 @@
                 isSpeaking = false;
             });
         });
+
+        const translations = {
+            ru: {
+                heroTitle: "Тренируй мозг,<br>а не только мышцы",
+                heroSubtitle: "Первый в России фитнес-клуб для интеллекта. Научно обоснованные тренировки памяти, внимания, скорости мышления и креативности — полностью бесплатно.",
+                watchExercises: "Смотреть упражнения",
+                programsTitle: "Выберите упражнение",
+                programsDesc: "Нажмите на карточку — откроется описание. Можно читать или прослушать.",
+                free: "Бесплатно"
+            },
+            en: {
+                heroTitle: "Train your brain,<br>not just your muscles",
+                heroSubtitle: "The first brain fitness club in Russia. Science-based training for memory, attention, thinking speed and creativity — completely free.",
+                watchExercises: "View exercises",
+                programsTitle: "Choose an exercise",
+                programsDesc: "Click a card — the description will open. You can read or listen.",
+                free: "Free"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            const t = translations[lang];
+            document.querySelector('.hero-title').innerHTML = t.heroTitle;
+            document.querySelector('.hero-subtitle').textContent = t.heroSubtitle;
+            document.querySelector('.hero-actions .btn').textContent = t.watchExercises;
+            document.querySelector('#programs .section-title').textContent = t.programsTitle;
+            document.querySelector('#programs .section-desc').textContent = t.programsDesc;
+            document.querySelectorAll('.free-badge').forEach(el => el.textContent = t.free);
+            localStorage.setItem('lang', lang);
+        }
+
+        // Restore language
+        const savedLang = localStorage.getItem('lang') || 'ru';
+        if (savedLang === 'en') setLanguage('en');
 
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav');
