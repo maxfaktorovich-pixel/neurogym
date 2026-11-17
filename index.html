@@ -544,6 +544,17 @@
             }
         };
 
+        const articlesEN = {
+            memory: {
+                title: "How working memory works",
+                text: "Working memory is the ability to hold and process information in your mind right now.\n\nImagine it as a desk you work at. The more space on it, the more tasks you can keep simultaneously.\n\nWhy it can be trained:\n\n1. It is plastic. Regular exercises increase the amount of information you can hold.\n2. Training improves attention and thinking speed.\n3. Good working memory helps you learn better, solve problems and get less distracted.\n\nSimple ways to train:\n- Repeat number sequences backwards.\n- Memorize lists and recall them.\n- Do exercises that require holding several elements in mind.\n\nWorking memory is a skill, not a fixed ability. The more you use it consciously, the stronger it becomes."
+            },
+            hygiene: {
+                title: "5 rules of digital hygiene",
+                text: "Digital hygiene helps you regain control over attention and get less distracted by the phone.\n\n1. Turn off notifications\nLeave only the most important ones. Check the rest manually 2–3 times a day.\n\n2. Use Do Not Disturb mode\nTurn it on for deep work periods (at least 25–50 minutes).\n\n3. Keep the phone out of sight\nWhen it is nearby, the brain constantly checks if something new has arrived.\n\n4. Take breaks without screens\nEvery hour stand up and look into the distance for 1–2 minutes. This reduces eye strain and restores focus.\n\n5. End the day without the phone\n30–60 minutes before sleep put gadgets away. This improves sleep quality and attention recovery.\n\nThese rules are simple, but when followed regularly they noticeably improve the ability to concentrate."
+            }
+        };
+
         let isSpeaking = false;
 
         document.querySelectorAll('.program-row').forEach(row => {
@@ -603,13 +614,20 @@
             }
 
             speechSynthesis.cancel();
+            const lang = localStorage.getItem('lang') || 'ru';
             const utterance = new SpeechSynthesisUtterance(text);
-            const voice = getBestRussianVoice();
-            if (voice) utterance.voice = voice;
-            utterance.lang = 'ru-RU';
-            utterance.rate = 0.92;
+            utterance.lang = lang === 'en' ? 'en-US' : 'ru-RU';
+            utterance.rate = lang === 'en' ? 0.95 : 0.92;
             utterance.pitch = 1.0;
             utterance.volume = 1.0;
+            const voices = speechSynthesis.getVoices();
+            if (lang === 'en') {
+                const enVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Alex')));
+                if (enVoice) utterance.voice = enVoice;
+            } else {
+                const ruVoice = getBestRussianVoice();
+                if (ruVoice) utterance.voice = ruVoice;
+            }
             utterance.onend = () => {
                 isSpeaking = false;
                 const lang = localStorage.getItem('lang') || 'ru';
@@ -619,7 +637,6 @@
             };
             speechSynthesis.speak(utterance);
             isSpeaking = true;
-            const lang = localStorage.getItem('lang') || 'ru';
             const t = translations[lang] || translations.ru;
             btn.textContent = t.stop || '⏹ Остановить';
             btn.classList.add('playing');
@@ -643,12 +660,13 @@
                 const id = card.dataset.article;
                 const art = articles[id];
                 if (!art) return;
-                document.getElementById('exTitle').textContent = art.title;
-                document.getElementById('exContent').innerHTML = art.text.replace(/\\n/g, '<br>');
+                const lang = localStorage.getItem('lang') || 'ru';
+                const artSource = (lang === 'en' && articlesEN[id]) ? articlesEN[id] : art;
+                document.getElementById('exTitle').textContent = artSource.title;
+                document.getElementById('exContent').innerHTML = artSource.text.replace(/\\n/g, '<br>');
                 document.getElementById('exerciseModal').classList.add('open');
                 document.body.style.overflow = 'hidden';
                 const btn = document.getElementById('listenBtn');
-                const lang = localStorage.getItem('lang') || 'ru';
                 const t = translations[lang] || translations.ru;
                 btn.textContent = t.listen || '🔊 Прослушать';
                 btn.classList.remove('playing');
