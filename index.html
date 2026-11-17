@@ -750,7 +750,8 @@
                 callButton: "Позвонить +7 (913) 478-08-92",
                 scheduleNote: "Групповые занятия проводятся по запросу. Свяжитесь с нами по телефону, чтобы узнать ближайшие слоты.",
                 heroImageAlt: "Фитнес-клуб для мозга",
-                programsTag: "Программы"
+                programsTag: "Программы",
+                november: "Ноябрь 2026"
             },
             en: {
                 heroTitle: "Train your brain,<br>not just your muscles",
@@ -826,7 +827,8 @@
                 callButton: "Call +7 (913) 478-08-92",
                 scheduleNote: "Group classes are held on request. Contact us by phone to find out the nearest slots.",
                 heroImageAlt: "Brain fitness club",
-                programsTag: "Programs"
+                programsTag: "Programs",
+                november: "November 2026"
             }
         };
 
@@ -911,6 +913,8 @@
             // Section tags
             const programsTag = document.querySelector('#programs .section-tag');
             if (programsTag) programsTag.textContent = t.programsTag;
+            const calHeader = document.querySelector('.calendar-header h3');
+            if (calHeader) calHeader.textContent = t.november;
             const aboutTag = document.querySelector('#about .section-tag');
             if (aboutTag) aboutTag.textContent = t.aboutTag;
             const scheduleTag = document.querySelector('#schedule .section-tag');
