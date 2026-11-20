@@ -751,7 +751,9 @@
                 scheduleNote: "Групповые занятия проводятся по запросу. Свяжитесь с нами по телефону, чтобы узнать ближайшие слоты.",
                 heroImageAlt: "Фитнес-клуб для мозга",
                 programsTag: "Программы",
-                november: "Ноябрь 2026"
+                november: "Ноябрь 2026",
+                cabinetSoon: "Скоро здесь появятся графики памяти, внимания и истории тренировок.",
+                cabinetFeature: "Функция личного кабинета скоро появится."
             },
             en: {
                 heroTitle: "Train your brain,<br>not just your muscles",
@@ -828,7 +830,9 @@
                 scheduleNote: "Group classes are held on request. Contact us by phone to find out the nearest slots.",
                 heroImageAlt: "Brain fitness club",
                 programsTag: "Programs",
-                november: "November 2026"
+                november: "November 2026",
+                cabinetSoon: "Memory, attention and training history charts will appear here soon.",
+                cabinetFeature: "Personal cabinet feature coming soon."
             }
         };
 
@@ -884,6 +888,9 @@
             if (cabinet) cabinet.textContent = t.cabinetTitle;
             const cabinetDesc = document.querySelector('#cabinet .section-desc');
             if (cabinetDesc) cabinetDesc.textContent = t.cabinetDesc;
+            const cabinetPs = document.querySelectorAll('#cabinet .cabinet-preview p');
+            if (cabinetPs[0] && t.cabinetSoon) cabinetPs[0].textContent = t.cabinetSoon;
+            if (cabinetPs[1] && t.cabinetFeature) cabinetPs[1].textContent = t.cabinetFeature;
             // Listen button
             const listenBtn = document.getElementById('listenBtn');
             if (listenBtn && !isSpeaking) listenBtn.textContent = t.listen;
