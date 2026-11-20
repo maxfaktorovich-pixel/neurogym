@@ -370,8 +370,6 @@
                 <p class="section-desc">Следите за результатами тренировок. Функция в разработке.</p>
             </div>
             <div class="cabinet-preview" style="text-align:center;padding:40px;background:var(--bg-card);border-radius:16px;border:1px solid var(--border);">
-                <p style="color:var(--text-muted);margin-bottom:20px;">Скоро здесь появятся графики памяти, внимания и истории тренировок.</p>
-                <p style="color:var(--text-muted);">Функция личного кабинета скоро появится.</p>
             </div>
         </div>
     </section>
@@ -389,9 +387,6 @@
                 </div>
                 <div class="footer-col">
                     <h4>Навигация</h4>
-                    <a href="#programs">Программы</a>
-                    <a href="#schedule">Расписание</a>
-                    <a href="#cafe">Нейро-кафе</a>
                 </div>
                 <div class="footer-col">
                     <h4>Контакты</h4>
@@ -888,9 +883,6 @@
             if (cabinet) cabinet.textContent = t.cabinetTitle;
             const cabinetDesc = document.querySelector('#cabinet .section-desc');
             if (cabinetDesc) cabinetDesc.textContent = t.cabinetDesc;
-            const cabinetPs = document.querySelectorAll('#cabinet .cabinet-preview p');
-            if (cabinetPs[0] && t.cabinetSoon) cabinetPs[0].textContent = t.cabinetSoon;
-            if (cabinetPs[1] && t.cabinetFeature) cabinetPs[1].textContent = t.cabinetFeature;
             // Listen button
             const listenBtn = document.getElementById('listenBtn');
             if (listenBtn && !isSpeaking) listenBtn.textContent = t.listen;
