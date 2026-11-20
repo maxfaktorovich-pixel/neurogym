@@ -562,7 +562,7 @@
                 const title = (t.exercises && t.exercises[id]) ? t.exercises[id].title : ex.title;
                 document.getElementById('exTitle').textContent = title;
                 const textSource = (lang === 'en' && exercisesEN[id]) ? exercisesEN[id].text : ex.text;
-                document.getElementById('exContent').innerHTML = textSource.replace(/\\n/g, '<br>');
+                document.getElementById('exContent').innerHTML = textSource.replace(/\n/g, '<br>');
                 document.getElementById('exerciseModal').classList.add('open');
                 document.body.style.overflow = 'hidden';
                 const btn = document.getElementById('listenBtn');
@@ -658,7 +658,7 @@
                 const lang = localStorage.getItem('lang') || 'ru';
                 const artSource = (lang === 'en' && articlesEN[id]) ? articlesEN[id] : art;
                 document.getElementById('exTitle').textContent = artSource.title;
-                document.getElementById('exContent').innerHTML = artSource.text.replace(/\\n/g, '<br>');
+                document.getElementById('exContent').innerHTML = artSource.text.replace(/\n/g, '<br>');
                 document.getElementById('exerciseModal').classList.add('open');
                 document.body.style.overflow = 'hidden';
                 const btn = document.getElementById('listenBtn');
@@ -858,6 +858,11 @@
             const progDesc = document.querySelector('#programs .section-desc');
             if (progDesc) progDesc.textContent = t.programsDesc;
             document.querySelectorAll('.free-badge').forEach(el => el.textContent = t.free);
+            document.querySelectorAll('.duration').forEach(el => {
+                if (!el.dataset.base) el.dataset.base = el.textContent;
+                el.textContent = lang === 'en' ? el.dataset.base.replace(/мин/g, 'min') : el.dataset.base;
+            });
+            document.title = lang === 'en' ? 'Brain Fitness Club | NeuroGym' : 'Фитнес-клуб для мозга | NeuroGym';
             // Translate exercise cards
             document.querySelectorAll('.program-row').forEach(row => {
                 const id = row.dataset.id;
